@@ -18,6 +18,8 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import AddOrder from "./OrderManagement/AddOrder";
 import QueryOrder from "./OrderManagement/QueryOrder";
 import FormUpdate from "./OrderManagement/FormUpdate";
+import EditModal from "./OrderManagement/EditModal";
+import AddModal from "./OrderManagement/AddModal";
 
 
 function App() {
@@ -58,12 +60,9 @@ function App() {
         <Switch>
           
            <Route exact path='/view-order'  > <AllOrder /></Route>
-           <Route exact path='/add-order'  > <Form1 /></Route>
+           <Route exact path='/add-order'  > <AddModal /></Route>
            <Route exact path='/query-Order'  > <QueryOrder /></Route>
-           <Route exact path='/edit-Order'  > <FormUpdate /></Route>
-           
-
-        
+           <Route exact path='/edit-Order'  > <EditModal /></Route>        
         
          </Switch>
         
