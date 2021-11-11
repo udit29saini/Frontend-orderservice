@@ -23,7 +23,9 @@ const FormUpdate = () => {
                name="email"
                placeholder="enter here"
                type="text" style={{width: 200}}
+              
                onChange={(e)=>{setOrder({...order,name_customer: e.target.value})}}
+                
                />
            </FormGroup>
            <FormGroup>
