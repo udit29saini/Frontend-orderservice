@@ -7,37 +7,43 @@ import axios from 'axios';
 
 const AllOrder = () => {
 
-    useEffect(()=>{
-            document.title="view order";
-            getAllOrder();
-    },[]);
+    const [orders, setOrder] = useState([]
+        // {nameCustomer: "Danish",shippingAddress: "Salam nagar, motihari",
+        //               billingAddress: "Salam nagar, motihari",paymentStatus: "UPI",products: "P1,P2"},
+        // {nameCustomer: "Danish",shippingAddress: "Salam nagar, motihari",
+        //               billingAddress: "Salam nagar, motihari",paymentStatus: "UPI",products: "P1,P2"},
+        // {nameCustomer: "Danish",shippingAddress: "Salam nagar, motihari",
+        //               billingAddress: "Salam nagar, motihari",paymentStatus: "UPI",products: "P1,P2"},              
+     )
 
-    const getAllOrder=()=>{axios.get(`${base_url}/items`).then(
+     useEffect(()=>{
+        document.title="view order";
+        getAllOrder();
+                },[]);
+
+    const getAllOrder=()=>{axios.get(`${base_url}/getorder`).then(
         (response)=>{
-            console.log(response.data);
-            setOrder(response.data);
+            const b = [response.data];
+            console.log("hhnh",b);
+            setOrder(b);
+            //console.log(orders);
     },
-    
         (error)=>{
             console.log(error);
         })};
 
-    const [orders, setOrder] = useState([
-        {nameCustomer: "Danish",shippingAddress: "Salam nagar, motihari",
-                      billingAddress: "Salam nagar, motihari",paymentStatus: "UPI",products: "P1,P2"},
-        {nameCustomer: "Danish",shippingAddress: "Salam nagar, motihari",
-                      billingAddress: "Salam nagar, motihari",paymentStatus: "UPI",products: "P1,P2"},
-        {nameCustomer: "Danish",shippingAddress: "Salam nagar, motihari",
-                      billingAddress: "Salam nagar, motihari",paymentStatus: "UPI",products: "P1,P2"},              
-    ])
+        console.log("state",orders);
 
     return (
         <div><Row>
+            {/* <h1>hello world</h1> */}
+            
             {orders.length>0? orders.map((o)=>
+               
+             
+               <Order key={o.orderId} order={o} />
 
-               <Order order={o} />
-
-            ) : "no Orders"}
+            ) : <div><br /> <h1 className='text-center'> No Orders</h1> </ div>}
             </Row>
         </div>
     )

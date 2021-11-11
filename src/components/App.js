@@ -16,6 +16,7 @@ import AllOrder from "./OrderManagement/AllOrder";
 import Form1 from "./OrderManagement/Form1";
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import AddOrder from "./OrderManagement/AddOrder";
+import QueryOrder from "./OrderManagement/QueryOrder";
 import FormUpdate from "./OrderManagement/FormUpdate";
 
 
@@ -48,7 +49,7 @@ function App() {
   return (
     <div >
       <Nav1 />
-
+     
         {/* <Header /> */}
           
   {/* <OrderPage addContactHandler={addContactHandler} />
@@ -57,9 +58,10 @@ function App() {
         <Switch>
           
            <Route exact path='/view-order'  > <AllOrder /></Route>
-           <Route exact path='/add-order'  > <AddOrder /></Route>
+           <Route exact path='/add-order'  > <Form1 /></Route>
+           <Route exact path='/query-Order'  > <QueryOrder /></Route>
+           <Route exact path='/edit-Order'  > <FormUpdate /></Route>
            
-                 
 
         
         
@@ -68,7 +70,6 @@ function App() {
     
 
       </Router>
-      
     </div>
   );
 }
