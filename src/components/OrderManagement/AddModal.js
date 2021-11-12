@@ -4,9 +4,13 @@ import { useState } from 'react';
 import FormUpdate from './FormUpdate';
 import Form1 from './Form1';
 
-const EditModal = () => {
+const AddModal = () => {
 
     const [order, setOrder] = useState({});
+    const[show , setShow] = useState(true)
+
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
 
    const handleForm=(e)=>{
 
@@ -16,17 +20,21 @@ const EditModal = () => {
 
    return (
        <div >
-           <Modal show={true}>
+           <Modal show={show} onHide={handleClose}>
                <Modal.Header closeButton>
                     <Modal.Title>Add Order Modal</Modal.Title>
                </Modal.Header>
                <Modal.Body>
                     <Form1 />
                </Modal.Body>
-               
+               <Modal.Footer>
+                   <Button variant="secondary" OnClick={handleClose}>
+                       Close
+                   </Button>
+                </Modal.Footer> 
            </Modal>
       </div>
    )
 }
 
-export default EditModal
+export default AddModal
