@@ -9,14 +9,20 @@ const Form1 = () => {
      const [order, setOrder] = useState({});
      useEffect(()=>{
         document.title="add order";
-        postData(order);
+        
                 },[]);
 
      const [products,setProducts]=useState([
-        {"dimension": 0,"name": "string","productDescription": "string","productId": 0,"productPrice": 0,"weight": 0}
-      ,{"dimension": 1,"name": "stng","productDescription": "sting","productId": 10,"productPrice": 200,"weight": 400}]
+        {
+            "name": "prod1",
+            "dimension": 3.55,
+            "productDescription": "Fashion1",
+            "productPrice": 100.01,
+            "weight": 101.0
+        }]
       );
-      const postData=()=>{axios.post(`${base_url}/createorder`).then(
+
+      const postData=(data)=>{axios.post(`${base_url}/createorder`, data).then(
         (response)=>{
             console.log("success",response);
             //console.log(orders);
@@ -25,20 +31,27 @@ const Form1 = () => {
             console.log(error);
         })};
 
-      const [paymentStatus, setPaymentStatus]=useState();
-      const handleStatus=(e)=>{
-        const checked= e.target.checked;
-        console.log(checked);
-        setPaymentStatus(checked);
-      }
+      const [status, setPaymentStatus]=useState(false);
+
+    //   const handleStatus=(e)=>{
+    //     const paymentStatus= e.target.checked;
+    //     console.log(paymentStatus);
+    //     setPaymentStatus(paymentStatus);
+    //     setOrder({...order,paymentStatus});
+    //   }
       //console.log("pro",product);
     const handleForm=(e)=>{
 
+        postData(order);
+        // setPaymentStatus(status);
+        // setOrder({...order,status});
         //setOrder.set(product);
-        console.log(order);
+        console.log(JSON.stringify(order));
         e.preventDefault();
     }
-     const createObj =()=>{setOrder({...order,products})}
+     const createObj =()=>{setOrder({...order,products})
+        //setOrder({...order,status});
+    }
 
 
     return (
@@ -69,12 +82,12 @@ const Form1 = () => {
                <Input
                id="	billingAddress"
                name="billingAddress"
-               placeholder="billingAddress"
+               placeholder="enter here"
                type="text" style={{width: 200}} 
                onChange={(e)=>{setOrder({...order, billingAddress: e.target.value})}}
                />
            </FormGroup>
-           <FormGroup>
+           {/* <FormGroup>
                <Label>Payment status</Label>
                <Input
                id="paymentStatus"
@@ -83,7 +96,7 @@ const Form1 = () => {
                type="boolean" style={{width: 200}} 
                onChange={(e)=>{setOrder({...order, paymentStatus: e.target.value})}}
                />
-           </FormGroup>
+           </FormGroup> */}
            {/* <FormGroup>
                <Label>ORDER ID</Label>
                <Input
@@ -100,10 +113,10 @@ const Form1 = () => {
            <input
         type="checkbox"
         name="subscription"
-        onChange={handleStatus}
+        onChange={(e)=>{setOrder({...order, paymentStatus: e.target.checked})}}
         //onChange={(e)=>{setOrder({...order, paymentStatus: e.target.checked})}}
-        checked={paymentStatus}
-      />{" "}
+        //paymentStatus={status}
+      />
            </FormGroup>
       
 

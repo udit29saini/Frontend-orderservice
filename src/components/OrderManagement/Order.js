@@ -13,7 +13,7 @@ const Order = ( props ) => {
       <>
             <Col sm="4">
   <Card body >
-  
+  <br />
   <CardTitle >Order ID: {props.order.orderId}</CardTitle>
   <CardTitle >Email ID: {props.order.email}</CardTitle>
     <CardTitle >NAME: {props.order.nameCustomer}</CardTitle>
