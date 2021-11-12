@@ -1,6 +1,8 @@
 import React from 'react'
 import { Container, Form, FormGroup, Input, Label,Button } from 'reactstrap'
 import { useState } from 'react';
+import axios from 'axios';
+import base_url from './Api';
 
 const FormUpdate = () => {
 
@@ -11,6 +13,20 @@ const FormUpdate = () => {
         console.log(order);
         e.preventDefault();
     }
+
+    const putData=(data)=>{axios.put(`${base_url}/updateorder`, data).then(
+        (response)=>{
+            console.log("success",response);
+            //console.log(orders);
+    },
+        (error)=>{
+            console.log(error);
+        })};
+
+        const updateData=()=>{
+            console.log("seeo",order);
+            putData(order);
+        }
 
 
     return (
@@ -24,18 +40,18 @@ const FormUpdate = () => {
                placeholder="enter here"
                type="text" style={{width: 200}}
               
-               onChange={(e)=>{setOrder({...order,name_customer: e.target.value})}}
+               onChange={(e)=>{setOrder({...order,email: e.target.value})}}
                 
                />
            </FormGroup>
            <FormGroup>
                <Label>BILLING ADDRESS</Label>
                <Input
-               id="billing_address"
-               name="billing_address"
+               id="billingAddress"
+               name="billingAddress"
                placeholder="enter here"
                type="text" style={{width: 200}}
-               onChange={(e)=>{setOrder({...order,billing_address: e.target.value})}}
+               onChange={(e)=>{setOrder({...order,billingAddress: e.target.value})}}
                />
            </FormGroup>
            <FormGroup>
@@ -45,7 +61,7 @@ const FormUpdate = () => {
                name="mobile number"
                placeholder="MOBILE NUMBER"
                type="text" style={{width: 200}} 
-               onChange={(e)=>{setOrder({...order, shipping_address: e.target.value})}}
+               onChange={(e)=>{setOrder({...order, mobileNumber: e.target.value})}}
                />
            </FormGroup>
            
@@ -57,11 +73,11 @@ const FormUpdate = () => {
                placeholder="enter here"
                type="text" 
                style={{width: 200}} 
-               onChange={(e)=>{setOrder({...order, order_id: e.target.value})}}
+               onChange={(e)=>{setOrder({...order, orderId: e.target.value})}}
                />
            </FormGroup>
            <Container className="text-center">
-               <Button type='submit' color="success">SUBMIT</Button>
+               <Button type='submit' color="success" onClick={updateData}>SUBMIT</Button>
            </Container>
            
        </Form>

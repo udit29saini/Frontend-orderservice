@@ -1,14 +1,25 @@
 import React from 'react'
 import { Card,Col,CardTitle,Button, Modal, } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Form1 from './Form1';
+import AddOrder from './AddOrder';
+import AddModal from './AddModal';
+import { render } from '@testing-library/react';
+import EditModal from './EditModal';
 
 const Order = ( props ) => {
 
 
+   const editB=()=>{console.log("order",props.order)
+  
+   render(
+     
+     <EditModal />
+     
+   )
+  
+  
+  }
 
- // console.log("order", props.order)
-//console.log(props.order.products.length);
     return (
       <>
             <Col sm="4">
@@ -23,22 +34,12 @@ const Order = ( props ) => {
     <CardTitle >PAYMENT STATUS: {props.order.paymentStatus}</CardTitle>
     <CardTitle >order date: {props.order.orderDate}</CardTitle>
     <CardTitle >order cost: {props.order.orderCost}</CardTitle>
-    {/* <CardTitle >PRODUCTS: {props.order.products} </CardTitle> */}
-    {/* {props.order.products.length>0 ? props.order.products.map((product)=>
-  { return <CardTitle >PRODUCTS: {product.productId}  </CardTitle>}):"Hello"
-  
-  } */}
-    <Button  color="primary" >EDIT</Button>
+
+    <Button  color="primary" onClick={editB} >EDIT</Button>
 
 
   </Card>
   </Col>
-
-  {/* <Modal show={true} >
-      <Modal.Header>EDIT ORDER PAGE</Modal.Header>
-      <Modal.Body>this is body</Modal.Body>
-      <Modal.Footer>thank you</Modal.Footer>
-    </Modal> */}
 
   </>
     )

@@ -96,7 +96,6 @@ const QueryOrder = () => {
         </Form>
         
         <div><Row>
-            {/* <h1>hello world</h1> */}
             
             {orders.length>0? orders.map((o)=>
                
