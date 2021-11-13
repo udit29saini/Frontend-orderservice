@@ -48,13 +48,15 @@ const QueryOrder = () => {
 
 
     return (
-        <div>
+        <div >
         <Form onSubmit={handleForm}>
-        <FormGroup>
+          <div className="text-center">
+        <FormGroup >
     <Label for="exampleSelect">
-      Select
+      Query Category:
     </Label>
-    <Input
+    <Input className="text-center"
+    style={{width: 300, marginLeft:600}} 
       id="exampleSelect"
       name="select"
       type="select"
@@ -67,7 +69,7 @@ const QueryOrder = () => {
         Billing_Address
       </option>
       <option>
-        Address
+        Shipping_Address
       </option>
       <option>
         Payment
@@ -77,12 +79,13 @@ const QueryOrder = () => {
       </option>
 
     </Input>
-  </FormGroup>
-  <FormGroup>
+  </FormGroup></div>
+  <FormGroup className="text-center">
     <Label for="criteria">
-      Criteria
+      Query Parameter:
     </Label>
     <Input
+    style={{width: 300, marginLeft:600}} 
       id="criteria"
       name="criteria"
       placeholder="Query criteria"

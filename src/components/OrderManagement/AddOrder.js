@@ -3,24 +3,16 @@ import { Container, Form, FormGroup, Input, Label,Button } from 'reactstrap'
 import { useState } from 'react';
 import axios from 'axios';
 import base_url from './Api';
+import { Col, FormControl, Row, } from 'react-bootstrap';
 
 const AddOrder = () => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 
      const [order, setOrder] = useState({});
-     useEffect(()=>{
-        document.title="add order";
-        
-                },[]);
 
-     const [products,setProducts]=useState([
-        {
-            "name": "prod1",
-            "dimension": 3.55,
-            "productDescription": "Fashion1",
-            "productPrice": 100.01,
-            "weight": 101.0
-        }]
-      );
+     useEffect(()=>{document.title="add order"; },[]);
+
+     const [products,setProducts]=useState([]);
+    const [createP, setCreateP]=useState({});
 
       const postData=(data)=>{axios.post(`${base_url}/createorder`, data).then(
         (response)=>{
@@ -33,30 +25,48 @@ const AddOrder = () => {
 
       const [status, setPaymentStatus]=useState(false);
 
+      const hForm=(e)=>{
+        products.push(createP);
+        console.log("hello",products);
+        e.preventDefault();
+        
+
+    }
+
+
+
     const handleForm=(e)=>{
 
         postData(order);
         console.log(JSON.stringify(order));
         e.preventDefault();
     }
+    
      const createObj =()=>{setOrder({...order,products})
+                            setProducts([]);
     }
 
 
     return (
-        <div >
-       <Form onSubmit={handleForm}>
-           <FormGroup>
-               <Label>Name</Label>
-               <Input
+        <div>
+        <Row>
+            <Col className="ps-5" >
+            <div >
+       <Form  onSubmit={handleForm}>
+       <Row  className="mt-5">
+       <Col ><FormGroup>
+               <Label >Name</Label>
+               <Input 
+               required
                id="nameCustomer"
                name="nameCustomer"
                placeholder="enter here"
                type="text" style={{width: 200}}
                onChange={(e)=>{setOrder({...order,nameCustomer: e.target.value})}}
                />
-           </FormGroup>
-           <FormGroup>
+           </FormGroup ></Col>
+    
+           <Col className="ms-7"><FormGroup>
                <Label>SHIPPING ADDRESS</Label>
                <Input
                id="	shipping address"
@@ -65,8 +75,8 @@ const AddOrder = () => {
                type="text" style={{width: 200}} 
                onChange={(e)=>{setOrder({...order, billingAddress: e.target.value})}}
                />
-           </FormGroup>
-           <FormGroup>
+           </FormGroup></Col>
+           <Col><FormGroup>
                <Label>BILLING ADDRESS</Label>
                <Input
                id="shippingAddress"
@@ -75,61 +85,100 @@ const AddOrder = () => {
                type="text" style={{width: 200}}
                onChange={(e)=>{setOrder({...order,shippingAddress: e.target.value})}}
                />
-           </FormGroup>          
-    
-           <FormGroup>
+           </FormGroup></Col>         
+           <Col className="text-center mb-2" sm="15"><FormGroup >
                <label>Payment Status</label>
-           <input
-        type="checkbox"
-        name="subscription"
-        onChange={(e)=>{setOrder({...order, paymentStatus: e.target.checked})}}
-      />
-           </FormGroup>
-           <FormGroup>
-               <Label>Order Date</Label>
+                <input
+                style={{width: 30}}
+            
+                type="checkbox"
+                name="subscription"
+                 onChange={(e)=>{setOrder({...order, paymentStatus: e.target.checked})}}
+      /></FormGroup></Col>
+      <br /><br />
+                <Container className="text-center">
+               <Button type='submit' onClick={createObj} color="success">SUBMIT</Button>
+               <Button type='reset' color="warning " >Clear</Button>
+           </Container> 
+           
+           </Row>
+           </Form>
+           </div>
+           
+            </Col>
+
+
+
+            <Col className="mt-5">
+           <div >
+        <Form onSubmit={hForm}>
+            <Row>
+          <Col> <FormGroup>
+               <Label>Product Name</Label>
                <Input
-               id="	order date"
-               name="order date"
+               id="name"
+               name="name"
                placeholder="enter here"
                type="text" style={{width: 200}} 
-               onChange={(e)=>{setOrder({...order, billingAddress: e.target.value})}}
+               onChange={(e)=>{setCreateP({...createP, name: e.target.value})}}
                />
-           </FormGroup>
-           <FormGroup>
-               <Label>Order Cost</Label>
+           </FormGroup></Col>
+          <Col > <FormGroup>
+               <Label>Dimension</Label>
                <Input
-               id="	order cost"
-               name="order cost"
+               id="dimension"
+               name="dimension"
                placeholder="enter here"
                type="text" style={{width: 200}} 
-               onChange={(e)=>{setOrder({...order, billingAddress: e.target.value})}}
+               onChange={(e)=>{setCreateP({...createP, dimension: e.target.value})}}
                />
-           </FormGroup>
-           <FormGroup>
-               <Label>Email</Label>
+           </FormGroup></Col>
+          <Col > <FormGroup>
+               <Label>product Description</Label>
                <Input
                id="	email"
                name="email"
                placeholder="enter here"
                type="text" style={{width: 200}} 
-               onChange={(e)=>{setOrder({...order, billingAddress: e.target.value})}}
+               onChange={(e)=>{setCreateP({...createP, productDescription: e.target.value})}}
                />
-           </FormGroup>
-           <FormGroup>
-               <Label>Mobile number</Label>
+           </FormGroup></Col>
+          <Col > <FormGroup >
+               <Label>product Price</Label>
                <Input
-               id="	mobile number"
-               name="mobile number"
+               id="	productPrice"
+               name="productPrice"
                placeholder="enter here"
                type="text" style={{width: 200}} 
-               onChange={(e)=>{setOrder({...order, billingAddress: e.target.value})}}
+               onChange={(e)=>{setCreateP({...createP, productPrice: e.target.value})}}
                />
-           </FormGroup>
+           </FormGroup></Col>
 
-           <Container className="text-center">
-               <Button type='submit' onClick={createObj} color="success">SUBMIT</Button>
-           </Container>    
-       </Form>
+           <Col className="mt-5 me-3">
+           <Container className="text-center" >
+               <Button type='submit' color="success">SUBMIT</Button>
+               <Button type='reset' color="warning ml-2" >Clear</Button>
+           </Container> 
+           </Col>
+
+          <Col > <FormGroup>
+               <Label>weight</Label>
+               <Input
+               id="weight"
+               name="weight"
+               placeholder="enter here"
+               type="text" style={{width: 200}} 
+               onChange={(e)=>{setCreateP({...createP, weight: e.target.value})}}
+               />
+           </FormGroup></Col>
+       
+           </Row>
+           </Form>
+
+           </ div>
+
+           </Col>
+           </Row>
        </div>
     )
 }

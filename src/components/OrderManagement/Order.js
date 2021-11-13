@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card,Col,CardTitle,Button, Modal, } from 'reactstrap'
+import { Card,Col,CardTitle,Button, Modal, CardHeader, } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddOrder from './AddOrder';
 import AddModal from './AddModal';
@@ -23,15 +23,15 @@ const Order = ( props ) => {
     return (
       <>
             <Col sm="4">
-  <Card body >
+  <Card body  color = 'warning' >
   <br />
-  <CardTitle >Order ID: {props.order.orderId}</CardTitle>
+  <CardHeader className="text-center">Order ID: {props.order.orderId}</CardHeader>
+  <CardTitle >NAME: {props.order.nameCustomer}</CardTitle>
   <CardTitle >Email ID: {props.order.email}</CardTitle>
-    <CardTitle >NAME: {props.order.nameCustomer}</CardTitle>
     <CardTitle >MOBILE NO: {props.order.mobileNumber}</CardTitle>
     <CardTitle >SHIPPING ADDRESS: {props.order.shippingAddress}</CardTitle>
     <CardTitle >BILLING ADDRESS: {props.order.billingAddress}</CardTitle>
-    <CardTitle >PAYMENT STATUS: {props.order.paymentStatus}</CardTitle>
+    <CardTitle >PAYMENT STATUS: {props.order.paymentStatus.toString()}</CardTitle>
     <CardTitle >order date: {props.order.orderDate}</CardTitle>
     <CardTitle >order cost: {props.order.orderCost}</CardTitle>
 

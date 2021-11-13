@@ -30,14 +30,14 @@ const AllOrder = () => {
         console.log("state",orders);
 
     return (
-        <div><Row>
+        <div><Row >
             
             {orders.length>0? orders.map((o)=>
                
                <Order key={o.orderId} order={o} />
 
             ) : <div><br /> <h1 className='text-center'> No Orders</h1> </ div>}
-            </Row>
+            </Row> 
         </div>
     )
 }
