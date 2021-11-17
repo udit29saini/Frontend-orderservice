@@ -1,4 +1,5 @@
 import React from 'react'
+import "./AllOrder.css";
 import { useState, useEffect } from 'react'
 import Order from "./Order";
 import { Row } from 'reactstrap'
@@ -12,7 +13,7 @@ const AllOrder = () => {
   //const [users, setUsers] = useState(JsonData.slice(0, 50));
   const [pageNumber, setPageNumber] = useState(0);
 
-  const usersPerPage = 1;
+  const usersPerPage = 10;
   const pagesVisited = pageNumber * usersPerPage;
 
   useEffect(() => {
@@ -41,8 +42,8 @@ const AllOrder = () => {
   console.log("state", orders);
 
   return (
-    <div>
-      <Row >
+    <div className="allorder">
+      <div >
         {
           orders.length > 0 ? orders.slice(pagesVisited, pagesVisited + usersPerPage).map((o) =>
 
@@ -61,7 +62,7 @@ const AllOrder = () => {
           disabledClassName={"paginationDisabled"}
           activeClassName={"paginationActive"}
         />
-      </Row>
+      </div>
     </div>
   )
 }

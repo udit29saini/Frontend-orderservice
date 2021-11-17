@@ -1,0 +1,23 @@
+.order{
+    display: grid;
+    margin: 10px;
+    max-width: 30rem;
+    border-radius: 10rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.card{
+    
+    color:black;
+    background-color:lightgray;
+    font-size: medium;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-radius: 1rem;
+    width: auto;
+}
+
+.text-center{
+    color: whitesmoke;
+    background-color: brown;
+    border-radius: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

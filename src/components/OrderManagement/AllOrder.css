@@ -42,3 +42,9 @@
     color: grey;
     background-color: grey;
   }
+  .allorder{
+    background-color:darkkhaki;
+    display: grid;
+    border-radius: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
