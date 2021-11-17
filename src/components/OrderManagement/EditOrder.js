@@ -17,6 +17,7 @@ const FormUpdate = () => {
     const putData=(data)=>{axios.put(`${base_url}/updateorder`, data).then(
         (response)=>{
             console.log("success",response);
+            alert("success");
             //console.log(orders);
     },
         (error)=>{

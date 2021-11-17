@@ -21,8 +21,8 @@ const Nav1 = () => {
       Query Order
     </NavLink>
     {' '}
-    <NavLink href="/edit-order">
-      Edit Order
+    <NavLink href="/Product">
+      Product
     </NavLink>
     {' '}
     

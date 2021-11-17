@@ -4,6 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import base_url from './Api';
 import { Col, FormControl, Row, } from 'react-bootstrap';
+import Product from './Product';
 
 const AddOrder = () => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 
@@ -12,6 +13,7 @@ const AddOrder = () => {
      useEffect(()=>{document.title="add order"; },[]);
 
      const [products,setProducts]=useState([]);
+
     const [createP, setCreateP]=useState({});
 
       const postData=(data)=>{axios.post(`${base_url}/createorder`, data).then(
@@ -27,17 +29,25 @@ const AddOrder = () => {
 
       const hForm=(e)=>{
         products.push(createP);
+        alert("product added")
         console.log("hello",products);
         e.preventDefault();
         
 
     }
 
+    const childToParent=(e)=>{
+        setProducts(e);
+         console.log("fin array",products)
+
+}
+
 
 
     const handleForm=(e)=>{
 
         postData(order);
+        alert("order added")
         console.log(JSON.stringify(order));
         e.preventDefault();
     }
@@ -51,7 +61,7 @@ const AddOrder = () => {
         <div>
         <Row>
             <Col className="ps-5" >
-            <div >
+            <div className="border" >
        <Form  onSubmit={handleForm}>
        <Row  className="mt-5">
        <Col ><FormGroup>
@@ -104,13 +114,12 @@ const AddOrder = () => {
            </Row>
            </Form>
            </div>
-           
             </Col>
 
 
 
-            <Col className="mt-5">
-           <div >
+            {/* <Col className="mt-5">
+           <div className="border" >
         <Form onSubmit={hForm}>
             <Row>
           <Col> <FormGroup>
@@ -177,8 +186,14 @@ const AddOrder = () => {
 
            </ div>
 
-           </Col>
+           </Col> */}
            </Row>
+           <div>
+           <Row>
+           {/* <Product /> */}
+           <Product childToParent={childToParent} />
+           </Row>
+           </div>
        </div>
     )
 }

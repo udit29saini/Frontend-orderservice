@@ -23,7 +23,7 @@ const Order = ( props ) => {
     return (
       <>
             <Col sm="4">
-  <Card body  color = 'warning' >
+  <Card body >
   <br />
   <CardHeader className="text-center">Order ID: {props.order.orderId}</CardHeader>
   <CardTitle >NAME: {props.order.nameCustomer}</CardTitle>

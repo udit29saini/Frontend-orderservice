@@ -6,6 +6,7 @@ import QueryOrder from "./OrderManagement/QueryOrder"
 import EditModal from "./OrderManagement/EditModal"
 import AddOrder from "./OrderManagement/AddOrder";
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import Product from "./OrderManagement/Product";
 
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
            <Route exact path='/view-order'  > <AllOrder /></Route>
            <Route exact path='/add-order'  > <AddOrder /></Route>
            <Route exact path='/query-Order'  > <QueryOrder /></Route>
-           <Route exact path='/edit-Order'  > <EditModal /></Route>        
+           <Route exact path='/Product'  > <Product /></Route>
+                   
         
          </Switch>
       </Router>

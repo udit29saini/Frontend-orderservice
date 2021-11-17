@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
 import Order from "./Order";
-import { Row } from 'reactstrap'
+import { Col, Row } from 'reactstrap'
 import base_url from './Api';
 import axios from 'axios';
 
@@ -30,6 +30,14 @@ const AllOrder = () => {
         console.log("state",orders);
 
     return (
+      <>
+      <div>
+        <Row>
+          <Col>
+          
+          </Col>
+        </Row>
+      </div>
         <div><Row >
             
             {orders.length>0? orders.map((o)=>
@@ -39,6 +47,7 @@ const AllOrder = () => {
             ) : <div><br /> <h1 className='text-center'> No Orders</h1> </ div>}
             </Row> 
         </div>
+        </>
     )
 }
 
