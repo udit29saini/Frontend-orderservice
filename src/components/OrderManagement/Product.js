@@ -1,14 +1,23 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
+
 import { Card,Row,Col,CardHeader,CardTitle,Button,CardImg,Table, Container } from 'reactstrap';
 import './product.css'
+import _ from "lodash" ;
+import axios from "axios";
+
+const pageSize = 3;
 
 const Product = ({childToParent}) => {
 
     const [createP, setCreateP]=useState([]);
     const [product,setProduct]= useState([]);
+    
+    const [paginatedProduct,setpaginatedPproduct]= useState();
+     
 
     useEffect(() => {
+      
       document.title = "view order";
       getAllProduct();
     }, []);
@@ -20,10 +29,11 @@ const Product = ({childToParent}) => {
         const res = await fetch(url);
         const data = await res.json();
         setProduct(data);
+        setpaginatedPproduct(_(data).slice(0).take(pageSize).value()) ;
         console.log("ordes", product);
       } catch (error) {
         console.log(error);
-      }
+      }      
     };
       
       const addP=(o)=>{
@@ -39,6 +49,9 @@ const Product = ({childToParent}) => {
         
         };
 
+    const pageCount = product? Math.ceil(product.length/pageSize) :0;
+    if(pageCount === 1) return null;
+    const pages = _.range(1,pageCount+1) ;
 
     return (
         <Container style={{marginTop:15}}>
@@ -51,14 +64,12 @@ const Product = ({childToParent}) => {
                          <th>Price</th>
                          <th>Category</th>
                          <th></th>
-                         <th></th>
-                        
-
+                         <th></th> 
                      </tr>
                      </thead>
                      <tbody>
                      {
-                         product.map(o =>
+                         paginatedProduct.map(o =>
                              <tr key={o.id}>
                                  <td><img src={o.imageUrl} className="img-responsive"/></td>
                                  <td>{o.id}</td>
@@ -77,6 +88,16 @@ const Product = ({childToParent}) => {
                      }
                      </tbody>
                  </Table>
+                 <nav className="d-flex justify-content-center">
+                   <ul className="pagination">
+                     {
+                       pages.map((page) => (
+                        <li className="page-link">{page}</li>
+                        
+                       ))
+                     }                     
+                   </ul>
+                 </nav>
                  </Container>
     )
 }

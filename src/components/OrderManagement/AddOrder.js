@@ -19,7 +19,7 @@ const AddOrder = () => {
     useEffect(() => { document.title = "add order"; }, []);
 
     const postData = (data) => {
-        axios.post(`http://localhost:8081/order/createorder`, data).then(
+        axios.post(`http://localhost:8091/order/createorder`, data).then(
             (response) => {
                 console.log("success", response);
                 //console.log(orders);
