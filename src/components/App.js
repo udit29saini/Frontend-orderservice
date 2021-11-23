@@ -9,7 +9,6 @@ import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import Product from "./OrderManagement/Product";
 import Cart from "./OrderManagement/Cart";
 
-
 function App() {
   return (
     <div >
