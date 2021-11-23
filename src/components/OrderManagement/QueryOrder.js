@@ -4,6 +4,8 @@ import { useState,useEffect } from 'react'
 import axios from 'axios';
 import Order from "./Order";
 import base_url from './Api';
+import AllOrder from './AllOrder';
+import Footer1 from './Footer1';
 
 const QueryOrder = () => {
   useEffect(()=>{document.title="query order"; getAllOrder();},[]);
@@ -22,7 +24,7 @@ const QueryOrder = () => {
 
     const getSearch = async()=>{
       try {
-        let url = `http://localhost:8091/order/query-criteria/${qOrder.select}/${qOrder.criteria}`;
+        let url = `http://localhost:8081/order/query-criteria/${qOrder.select}/${qOrder.criteria}`;
         
         const res = await fetch(url);
         const data = await res.json();
@@ -45,7 +47,7 @@ const QueryOrder = () => {
 
    const getAllOrder = async()=>{
        try {
-         let url = `http://localhost:9992/order/getorder`;
+         let url = `http://localhost:8081/order/getorder`;
          
          const res = await fetch(url);
          const data = await res.json();
@@ -58,7 +60,7 @@ const QueryOrder = () => {
 
     return (
         <>
-        <Form onSubmit={handleForm}>
+        <Form  onSubmit={handleForm}>
           <div className="border" style={{marginBottom:50, marginTop:50}}>
           <Row>
             <Col style={{marginLeft:240, marginTop:20}}> <h2>Filter:</h2></Col>
@@ -110,7 +112,7 @@ const QueryOrder = () => {
         </Col>
         <Col style={{marginTop:20, marginRight:190}}>
         <Container className="text-center">
-               <Button type='submit' onClick={getQuery} color="success">SUBMIT</Button>
+               <Button type='submit' onClick={getQuery} color="success">SEARCH</Button>
            </Container>
            </Col>
            </Row>
@@ -127,7 +129,8 @@ const QueryOrder = () => {
             ) : <div><br /> <h1 className='text-center'> No Orders</h1> </ div>}
             </Row>
         </div> */}
-        <div><Row>
+        <div>
+          <Row>
             
             {orders.length>0? orders.map((o)=>
                
@@ -136,9 +139,10 @@ const QueryOrder = () => {
 
             ) : allorders.map((o)=> <Order key={o.orderId} order={o} />)  }
             </Row>
+           
         </div>
         
-            
+            {/* <Footer1 /> */}
         </>
     )
 }

@@ -7,6 +7,7 @@ import EditModal from "./OrderManagement/EditModal"
 import AddOrder from "./OrderManagement/AddOrder";
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import Product from "./OrderManagement/Product";
+import Cart from "./OrderManagement/Cart";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
            <Route exact path='/add-order'  > <AddOrder /></Route>
            <Route exact path='/query-Order'  > <QueryOrder /></Route>
            <Route exact path='/Product'  > <Product /></Route>
+           <Route exact path='/Cart'  > <Cart /></Route>
                    
         
          </Switch>
