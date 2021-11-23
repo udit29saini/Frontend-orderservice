@@ -1,23 +1,17 @@
 import React from 'react'
-import { Card,Col,CardTitle,Button, Modal, CardHeader, } from 'reactstrap'
+import { Card, Col, CardTitle, Button, Modal, CardHeader, } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddOrder from './AddOrder';
 import AddModal from './AddModal';
 import { render } from '@testing-library/react';
 import EditModal from './EditModal';
-
-const Order = ( props ) => {
-
-
-   const editB=()=>{console.log("order",props.order)
-  
-   render(
-     
-     <EditModal />
-     
-   )
-  
-  
+import "./order.css";
+const Order = (props) => {
+  const editB = () => {
+    console.log("order", props.order)
+    render(
+      <EditModal />
+    )
   }
 
     return (

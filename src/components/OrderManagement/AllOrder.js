@@ -1,4 +1,5 @@
 import React from 'react'
+import "./AllOrder.css";
 import { useState, useEffect } from 'react'
 import Order from "./Order";
 import { Col, Row } from 'reactstrap'
@@ -14,7 +15,11 @@ const AllOrder = () => {
   //const [users, setUsers] = useState(JsonData.slice(0, 50));
   const [pageNumber, setPageNumber] = useState(0);
 
+<<<<<<< HEAD
   const usersPerPage = 6;
+=======
+  const usersPerPage = 10;
+>>>>>>> 711a1d6aef8fa7d8fb0ae9d7a4a4dfa7864810b9
   const pagesVisited = pageNumber * usersPerPage;
 
   useEffect(() => {
