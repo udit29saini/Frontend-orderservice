@@ -1,199 +1,161 @@
 import React, { useEffect } from 'react'
-import { Container, Form, FormGroup, Input, Label,Button } from 'reactstrap'
+import { Container, Form, FormGroup, Input, Label, Button } from 'reactstrap'
 import { useState } from 'react';
 import axios from 'axios';
 import base_url from './Api';
 import { Col, FormControl, Row, } from 'react-bootstrap';
 import Product from './Product';
+import ProductList from './ProductList';
+import Footer1 from './Footer1';
 
-const AddOrder = () => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+const AddOrder = () => {
 
-     const [order, setOrder] = useState({});
-
-     useEffect(()=>{document.title="add order"; },[]);
-
-     const [products,setProducts]=useState([]);
-
+    const [order, setOrder] = useState({});
+    const [products,setProducts]=useState([]);
     const [createP, setCreateP]=useState({});
+    //const [status, setPaymentStatus] = useState(false);
 
-      const postData=(data)=>{axios.post(`${base_url}/createorder`, data).then(
-        (response)=>{
-            console.log("success",response);
-            //console.log(orders);
-    },
-        (error)=>{
-            console.log(error);
-        })};
+    useEffect(() => { document.title = "add order"; }, []);
 
-      const [status, setPaymentStatus]=useState(false);
+    const postData = (data) => {
+        axios.post(`http://localhost:8081/order/createorder`, data).then(
+            (response) => {
+                console.log("success", response);
+                //console.log(orders);
+            },
+            (error) => {
+                console.log(error);
+            })
+    };
 
-      const hForm=(e)=>{
+    const hForm = (e) => {
         products.push(createP);
         alert("product added")
         console.log("hello",products);
         e.preventDefault();
-        
-
     }
 
     const childToParent=(e)=>{
+        console.log("fin array",products)
         setProducts(e);
-         console.log("fin array",products)
+         
 
 }
 
-
-
-    const handleForm=(e)=>{
+    const handleForm = (e) => {
 
         postData(order);
         alert("order added")
         console.log(JSON.stringify(order));
         e.preventDefault();
     }
-    
-     const createObj =()=>{setOrder({...order,products})
-                            setProducts([]);
+
+    const createObj = () => {
+        setOrder({ ...order, products })
+        setProducts([]);
     }
 
 
     return (
         <div>
         <Row>
-            <Col className="ps-5" >
-            <div className="border" >
-       <Form  onSubmit={handleForm}>
-       <Row  className="mt-5">
-       <Col ><FormGroup>
-               <Label >Name</Label>
+            
+            <div className="border" style={{marginBottom:15}} >
+       <Form  style={{marginLeft:100, marginTop:50}}  onSubmit={handleForm}>
+       
+       <FormGroup>
+               <Label ><h3>Name:</h3></Label>
                <Input 
                required
                id="nameCustomer"
                name="nameCustomer"
                placeholder="enter here"
-               type="text" style={{width: 200}}
+               type="text" style={{width: 400}}
                onChange={(e)=>{setOrder({...order,nameCustomer: e.target.value})}}
                />
-           </FormGroup ></Col>
+           </FormGroup >
     
-           <Col className="ms-7"><FormGroup>
-               <Label>SHIPPING ADDRESS</Label>
+           <FormGroup>
+               <Label><h4>SHIPPING ADDRESS:</h4></Label>
                <Input
+               required
                id="	shipping address"
                name="shipping address"
                placeholder="enter here"
-               type="text" style={{width: 200}} 
+               type="text" style={{width: 800}} 
                onChange={(e)=>{setOrder({...order, billingAddress: e.target.value})}}
                />
-           </FormGroup></Col>
-           <Col><FormGroup>
-               <Label>BILLING ADDRESS</Label>
+           </FormGroup>
+           <FormGroup>
+               <Label><h4>BILLING ADDRESS:</h4></Label>
                <Input
+               required
                id="shippingAddress"
                name="shippingAddress"
                placeholder="enter here"
-               type="text" style={{width: 200}}
+               type="text" style={{width: 800}}
                onChange={(e)=>{setOrder({...order,shippingAddress: e.target.value})}}
                />
-           </FormGroup></Col>         
-           <Col className="text-center mb-2" sm="15"><FormGroup >
-               <label>Payment Status</label>
+           </FormGroup> 
+           
+               <h4>Payment Type:</h4>        
+           <FormGroup >
+               <label><h5>Prepaid:</h5></label>
                 <input
                 style={{width: 30}}
-            
                 type="checkbox"
                 name="subscription"
-                 onChange={(e)=>{setOrder({...order, paymentStatus: e.target.checked})}}
-      /></FormGroup></Col>
+                value="true"
+                 onChange={(e)=>{setOrder({...order, paymentStatus: e.target.value})}}
+      /></FormGroup>
+      
+      <FormGroup >
+               <label><h5>Postpaid:</h5></label>
+                <input
+                style={{width: 30}}
+                type="checkbox"
+                name="subscription"
+                value="false"
+                 onChange={(e)=>{setOrder({...order, paymentStatus: e.target.value})}}
+      /></FormGroup>
+      
       <br /><br />
                 <Container className="text-center">
-               <Button type='submit' onClick={createObj} color="success">SUBMIT</Button>
-               <Button type='reset' color="warning " >Clear</Button>
+               <Button  type='submit' onClick={createObj} color="success">Place Order</Button>
+               <Button style={{marginLeft:10}} type='reset' color="warning " >Clear</Button>
            </Container> 
            
-           </Row>
+           
            </Form>
            </div>
-            </Col>
+            
+        <h1 className="text-center">ADD PRODUCT</h1>
+        <div><Product childToParent={childToParent} /></div>
 
 
-
-            {/* <Col className="mt-5">
-           <div className="border" >
-        <Form onSubmit={hForm}>
-            <Row>
-          <Col> <FormGroup>
-               <Label>Product Name</Label>
-               <Input
-               id="name"
-               name="name"
-               placeholder="enter here"
-               type="text" style={{width: 200}} 
-               onChange={(e)=>{setCreateP({...createP, name: e.target.value})}}
-               />
-           </FormGroup></Col>
-          <Col > <FormGroup>
-               <Label>Dimension</Label>
-               <Input
-               id="dimension"
-               name="dimension"
-               placeholder="enter here"
-               type="text" style={{width: 200}} 
-               onChange={(e)=>{setCreateP({...createP, dimension: e.target.value})}}
-               />
-           </FormGroup></Col>
-          <Col > <FormGroup>
-               <Label>product Description</Label>
-               <Input
-               id="	email"
-               name="email"
-               placeholder="enter here"
-               type="text" style={{width: 200}} 
-               onChange={(e)=>{setCreateP({...createP, productDescription: e.target.value})}}
-               />
-           </FormGroup></Col>
-          <Col > <FormGroup >
-               <Label>product Price</Label>
-               <Input
-               id="	productPrice"
-               name="productPrice"
-               placeholder="enter here"
-               type="text" style={{width: 200}} 
-               onChange={(e)=>{setCreateP({...createP, productPrice: e.target.value})}}
-               />
-           </FormGroup></Col>
-
-           <Col className="mt-5 me-3">
-           <Container className="text-center" >
-               <Button type='submit' color="success">SUBMIT</Button>
-               <Button type='reset' color="warning ml-2" >Clear</Button>
-           </Container> 
-           </Col>
-
-          <Col > <FormGroup>
-               <Label>weight</Label>
-               <Input
-               id="weight"
-               name="weight"
-               placeholder="enter here"
-               type="text" style={{width: 200}} 
-               onChange={(e)=>{setCreateP({...createP, weight: e.target.value})}}
-               />
-           </FormGroup></Col>
-       
            </Row>
-           </Form>
+           
+           {/* <Row>
+           <div style={{marginTop:50}}>
 
-           </ div>
-
-           </Col> */}
-           </Row>
-           <div>
            <Row>
-           {/* <Product /> */}
-           <Product childToParent={childToParent} />
+            <Product childToParent={childToParent} />
            </Row>
+           <Col>
+               <div>
+                   <h2>Cart</h2>
+                   <h3>{products.map((p)=>(p.name))}</h3>
+
+               </div>
+               </Col>
            </div>
+           
+
+           </Row> */}
+           {/* <div>
+               <ProductList />
+           </div> */}
+           {/* <Footer1 /> */}
        </div>
     )
 }

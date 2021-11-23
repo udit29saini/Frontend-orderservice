@@ -25,7 +25,10 @@ const Nav1 = () => {
       Product
     </NavLink>
     {' '}
-    
+    <NavLink href="/show-product">
+      Products
+    </NavLink>
+    {' '}
   </Nav>
       </div>
       </div>
