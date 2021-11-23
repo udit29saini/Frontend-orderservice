@@ -27,11 +27,11 @@ const AddModal = () => {
                <Modal.Body>
                     <AddOrder />
                </Modal.Body>
-               <Modal.Footer>
+               {/* <Modal.Footer>
                    <Button variant="secondary" OnClick={handleClose}>
                        Close
                    </Button>
-                </Modal.Footer> 
+                </Modal.Footer>  */}
            </Modal>
       </div>
    )

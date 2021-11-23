@@ -8,6 +8,7 @@ import axios from 'axios';
 import ReactPaginate from "react-paginate";
 import "./AllOrder.css";
 import Footer1 from './Footer1';
+import pexel from "./pexels-jess-bailey-designs-743986.jpg"
 
 const AllOrder = () => {
 
@@ -49,9 +50,10 @@ const AllOrder = () => {
   console.log("state", orders);
 
     return (
+      <div style={{backgroundImage: `url(${pexel})`}}>
 <div>
 
-<Row >
+<Row style={{marginTop:50,marginLeft:150,marginRight:150}} >
 
   {
 
@@ -91,6 +93,7 @@ const AllOrder = () => {
 
 </Row>
 {/* <Footer1 /> */}
+</div>
 </div>
     )
 }

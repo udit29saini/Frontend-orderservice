@@ -7,6 +7,7 @@ import { Col, FormControl, Row, } from 'react-bootstrap';
 import Product from './Product';
 import ProductList from './ProductList';
 import Footer1 from './Footer1';
+import pexel from "./pexels-jess-bailey-designs-743986.jpg"
 
 const AddOrder = () => {
 
@@ -57,7 +58,7 @@ const AddOrder = () => {
 
 
     return (
-        <div>
+        <div style={{backgroundImage: `url(${pexel})`}}>
         <Row>
             
             <div className="border" style={{marginBottom:15}} >

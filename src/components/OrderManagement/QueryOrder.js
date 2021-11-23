@@ -6,6 +6,7 @@ import Order from "./Order";
 import base_url from './Api';
 import AllOrder from './AllOrder';
 import Footer1 from './Footer1';
+import pexel from "./pexels-jess-bailey-designs-743986.jpg"
 
 const QueryOrder = () => {
   useEffect(()=>{document.title="query order"; getAllOrder();},[]);
@@ -59,7 +60,7 @@ const QueryOrder = () => {
      };
 
     return (
-        <>
+        <div style={{backgroundImage: `url(${pexel})`}}>
         <Form  onSubmit={handleForm}>
           <div className="border" style={{marginBottom:50, marginTop:50}}>
           <Row>
@@ -130,7 +131,7 @@ const QueryOrder = () => {
             </Row>
         </div> */}
         <div>
-          <Row>
+          <Row style={{marginTop:50,marginLeft:150,marginRight:150}}>
             
             {orders.length>0? orders.map((o)=>
                
@@ -143,7 +144,7 @@ const QueryOrder = () => {
         </div>
         
             {/* <Footer1 /> */}
-        </>
+        </div>
     )
 }
 
