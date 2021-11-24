@@ -2,9 +2,8 @@ import React from 'react'
 import { Container, Form, FormGroup, Input, Label,Button,Modal } from 'react-bootstrap'
 import { useState } from 'react';
 import FormUpdate from './EditOrder';
-import AddOrderForm from './AddOrderForm';
 
-const EditModal = () => {
+const InfoModal = () => {
 
     const [order, setOrder] = useState({});
     const[show , setShow] = useState(true)
@@ -32,4 +31,4 @@ const EditModal = () => {
    )
 }
 
-export default EditModal
+export default InfoModal
