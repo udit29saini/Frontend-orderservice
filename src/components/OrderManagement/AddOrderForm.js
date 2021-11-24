@@ -9,12 +9,11 @@ import ProductList from './ProductList';
 import Footer1 from './Footer1';
 import pexel from "./pexels-jess-bailey-designs-743986.jpg"
 
-const AddOrder = () => {
+const AddOrderForm = (pro) => {
 
+    console.log("pops",pro.prod);
     const [order, setOrder] = useState({});
-    const [products,setProducts]=useState([]);
-    const [createP, setCreateP]=useState({});
-    
+    const [products,setProducts]=useState(pro.prod);
 
     useEffect(() => { document.title = "add order"; }, []);
 
@@ -29,20 +28,6 @@ const AddOrder = () => {
             })
     };
 
-    const hForm = (e) => {
-        products.push(createP);
-        alert("product added")
-        console.log("hello",products);
-        e.preventDefault();
-    }
-
-    const childToParent=(e)=>{
-        console.log("fin array",products)
-        setProducts(e);
-         
-
-}
-
     const handleForm = (e) => {
 
         postData(order);
@@ -52,8 +37,10 @@ const AddOrder = () => {
     }
 
     const createObj = () => {
+        //setProducts(pro.prod);
+        console.log("mtf",products);
         setOrder({ ...order, products })
-        setProducts([]);
+        //setProducts([]);
     }
 
 
@@ -62,7 +49,7 @@ const AddOrder = () => {
         <Row>
             
             <div className="border" style={{marginBottom:15}} >
-       <Form  style={{marginLeft:100, marginTop:50}}  onSubmit={handleForm}>
+       <Form  style={{marginLeft:10, marginTop:50}}  onSubmit={handleForm}>
        
        <FormGroup>
                <Label ><h3>Name:</h3></Label>
@@ -71,7 +58,7 @@ const AddOrder = () => {
                id="nameCustomer"
                name="nameCustomer"
                placeholder="enter here"
-               type="text" style={{width: 400}}
+               type="text" style={{width: 300}}
                onChange={(e)=>{setOrder({...order,nameCustomer: e.target.value})}}
                />
            </FormGroup >
@@ -83,7 +70,7 @@ const AddOrder = () => {
                id="	shipping address"
                name="shipping address"
                placeholder="enter here"
-               type="text" style={{width: 800}} 
+               type="text" style={{width: 450}} 
                onChange={(e)=>{setOrder({...order, billingAddress: e.target.value})}}
                />
            </FormGroup>
@@ -94,7 +81,7 @@ const AddOrder = () => {
                id="shippingAddress"
                name="shippingAddress"
                placeholder="enter here"
-               type="text" style={{width: 800}}
+               type="text" style={{width: 450}}
                onChange={(e)=>{setOrder({...order,shippingAddress: e.target.value})}}
                />
            </FormGroup> 
@@ -129,30 +116,9 @@ const AddOrder = () => {
            
            </Form>
            </div>
-            
-        
-        <div><Product childToParent={childToParent} /></div>
-
-
            </Row>
-           
-        <div>
-            <Row>
-                
-        {products.map(e =>
-            <Card>
-                <CardBody>
-                
-                <CardTitle>hey there{e.name}</CardTitle>
-                <CardTitle>hello{e.price}</CardTitle>
-            
-                </CardBody>
-            </Card>
-            )}
-            </Row>
-        </div>
        </div>
     )
 }
 
-export default AddOrder
+export default AddOrderForm

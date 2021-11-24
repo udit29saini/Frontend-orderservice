@@ -3,8 +3,10 @@ import { Container, Form, FormGroup, Input, Label,Button,Modal } from 'react-boo
 import { useState } from 'react';
 import FormUpdate from './EditOrder';
 import AddOrder from './AddOrder';
+import AddOrderForm from './AddOrderForm';
 
-const AddModal = () => {
+const AddModal = (props) => {
+    console.log("modalPro",props.pro);
 
     const [order, setOrder] = useState({});
     const[show , setShow] = useState(true)
@@ -22,10 +24,10 @@ const AddModal = () => {
        <div >
            <Modal show={show} onHide={handleClose}>
                <Modal.Header closeButton>
-                    <Modal.Title>Add Order Modal</Modal.Title>
+                    <Modal.Title>Personal Information</Modal.Title>
                </Modal.Header>
                <Modal.Body>
-                    <AddOrder />
+                    <AddOrderForm prod={props.pro} />
                </Modal.Body>
                {/* <Modal.Footer>
                    <Button variant="secondary" OnClick={handleClose}>

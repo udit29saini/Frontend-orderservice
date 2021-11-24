@@ -1,12 +1,23 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
+import { render } from 'react-dom';
+import { renderIntoDocument } from 'react-dom/test-utils';
 import { Card,Row,Col,CardHeader,CardTitle,Button,CardImg,Table, Container } from 'reactstrap';
+import AddModal from './AddModal';
+import AddOrderForm from './AddOrderForm';
+import EditModal from './EditModal';
 import './product.css'
 
 const Product = ({childToParent}) => {
 
     const [createP, setCreateP]=useState([]);
     const [product,setProduct]= useState([]);
+   
+    const openForm = () => {
+      renderIntoDocument(
+        <AddModal pro={createP} />
+      )
+    }
 
     useEffect(() => {
       document.title = "view order";
@@ -28,20 +39,41 @@ const Product = ({childToParent}) => {
       
       const addP=(o)=>{
        
-          createP.push(o);
-          childToParent(createP);
+          //createP.push(o);
+          setCreateP([...createP,o]);
+          //childToParent(createP);
+          
       };
 
       const deleteP=(o)=>{
         const newP = createP.filter(e=> o.id !== e.id);
        setCreateP(newP);
-       childToParent(createP);
+       //childToParent(createP);
         
         };
+
+        const sendP=()=>{
+          childToParent(createP)
+        }
+
+        const countP=(o)=>{
+          let count=0;
+          createP.map(item=>{
+            if(item.id===o.id)
+            {
+               count++;
+            }
+            return count;
+            
+            })
+
+        }
+
 
 
     return (
         <Container style={{marginTop:15}}>
+          <h1 className="text-center">ADD PRODDUCT</h1>
        <Table striped bordered hover style={{textAlign: "center"}}>
                      <thead>
                      <tr>
@@ -52,6 +84,7 @@ const Product = ({childToParent}) => {
                          <th>Category</th>
                          <th></th>
                          <th></th>
+                         <th>count</th>
                         
 
                      </tr>
@@ -67,16 +100,18 @@ const Product = ({childToParent}) => {
                                  <td>{o.categoryId[0]}</td>
                                  <td>
                                  <Button onClick={()=>addP(o)} color="primary" >ADD</Button>
-                                     
-
                                  </td>
                                  <td><Button color="danger" onClick={()=>deleteP(o)}>Delete</Button></td>
+                                 <td>{()=>countP(o)}</td>
                                  
                              </tr>
                          )
                      }
                      </tbody>
                  </Table>
+                 <Container className="text-center">
+                 <Button  color="success" onClick={openForm}>NEXT</Button>
+                 </Container>
                  </Container>
     )
 }

@@ -48,7 +48,7 @@ const QueryOrder = () => {
 
    const getAllOrder = async()=>{
        try {
-         let url = `http://localhost:8081/order/getorder`;
+         let url = `http://localhost:8091/order/getorder`;
          
          const res = await fetch(url);
          const data = await res.json();

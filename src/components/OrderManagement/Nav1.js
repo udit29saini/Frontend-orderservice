@@ -26,11 +26,11 @@ const Nav1 = () => {
       Query Order
     </NavLink>
     {' '}
-    {/* <NavLink href="/Product">
+    <NavLink href="/Product">
       Product
     </NavLink>
     {' '}
-    <NavLink href="/Cart">
+    {/* <NavLink href="/Cart">
       Cart
     </NavLink>
     {' '} */}
