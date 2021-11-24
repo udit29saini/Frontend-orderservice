@@ -6,7 +6,7 @@ import { Col, Row } from 'reactstrap'
 import base_url from './Api';
 import axios from 'axios';
 import ReactPaginate from "react-paginate";
-import "./AllOrder.css";
+// import "./AllOrder.css";
 import Footer1 from './Footer1';
 import pexel from "./pexels-jess-bailey-designs-743986.jpg"
 

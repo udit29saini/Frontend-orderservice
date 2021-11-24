@@ -5,6 +5,7 @@ import { Card,Row,Col,CardHeader,CardTitle,Button,CardImg,Table, Container } fro
 import './product.css'
 import _ from "lodash" ;
 import axios from "axios";
+import ReactPaginate from 'react-paginate';
 
 const pageSize = 3;
 
@@ -13,7 +14,7 @@ const Product = ({childToParent}) => {
     const [createP, setCreateP]=useState([]);
     const [product,setProduct]= useState([]);
     
-    const [paginatedProduct,setpaginatedPproduct]= useState();
+    const [paginatedProduct,setpaginatedPproduct]= useState([]);
      
 
     useEffect(() => {
@@ -53,6 +54,10 @@ const Product = ({childToParent}) => {
     if(pageCount === 1) return null;
     const pages = _.range(1,pageCount+1) ;
 
+    const handlePageClick = (data)=>{
+      console.log(data.selected);
+    }
+
     return (
         <Container style={{marginTop:15}}>
        <Table striped bordered hover style={{textAlign: "center"}}>
@@ -88,7 +93,30 @@ const Product = ({childToParent}) => {
                      }
                      </tbody>
                  </Table>
-                 <nav className="d-flex justify-content-center">
+                 <div>
+                   <ReactPaginate
+                   previousLabel={'Prev'}
+                   nextLabel={'Next'}
+                   breakLabel={'...'}
+                   pageCount={15}
+                   marginPagesDisplayed={2}
+                   pageRangeDisplayed={3}
+                   onPageChange={handlePageClick}
+                   containerClassName={'pagination justify-content-center'}
+                   pageClassName={'page-item'}
+                   pageLinkClassName={'page-link'}
+                   previousClassName={'page-link'}
+                   previousLinkClassName={'page-item'}
+                   nextClassName={'page-link'}
+                   nextLinkClassName={'page-item'}
+                   breakClassName={'page-link'}
+                   breakLinkClassName={'page-item'}
+                   activeClassName={'active'}
+                   >
+
+                   </ReactPaginate>
+                 </div>
+                 {/* <nav className="d-flex justify-content-center">
                    <ul className="pagination">
                      {
                        pages.map((page) => (
@@ -97,8 +125,9 @@ const Product = ({childToParent}) => {
                        ))
                      }                     
                    </ul>
-                 </nav>
+                 </nav> */}
                  </Container>
+                 
     )
 }
 
