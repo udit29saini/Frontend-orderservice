@@ -69,7 +69,7 @@ const Product = ({childToParent}) => {
                      </thead>
                      <tbody>
                      {
-                         paginatedProduct.map(o =>
+                         product.map(o =>
                              <tr key={o.id}>
                                  <td><img src={o.imageUrl} className="img-responsive"/></td>
                                  <td>{o.id}</td>

@@ -38,64 +38,39 @@ const AllOrder = () => {
   };
 
   const pageCount = Math.ceil(orders.length / usersPerPage);
-
-
-
   const changePage = ({ selected }) => {
-
     setPageNumber(selected);
-
   };
-
   console.log("state", orders);
 
-    return (
-      <div style={{backgroundImage: `url(${pexel})`}}>
-<div>
-
-<Row style={{marginTop:50,marginLeft:150,marginRight:150}} >
-
-  {
-
-    orders.length > 0 ? orders.slice(pagesVisited, pagesVisited + usersPerPage).map((o) =>
-
-
-
-      <Order key={o.orderId} order={o} className="orders"/>
-
-
-
-    ) : <div><br /> <h1 className='text-center'> No Orders</h1> </ div>
-
-  }
-
-  <ReactPaginate
-
-    previousLabel={"Previous"}
-
-    nextLabel={"Next"}
-
-    pageCount={pageCount}
-
-    onPageChange={changePage}
-
-    containerClassName={"paginationBttns"}
-
-    previousLinkClassName={"previousBttn"}
-
-    nextLinkClassName={"nextBttn"}
-
-    disabledClassName={"paginationDisabled"}
-
-    activeClassName={"paginationActive"}
-
-  className="pagination"/>
-
-</Row>
-{/* <Footer1 /> */}
-</div>
-</div>
+return (
+      <div className="fullpage">
+        <div className="orders">
+          <Row className="roworder">
+            {
+              orders.length > 0 ? orders.slice(pagesVisited, pagesVisited + usersPerPage).map((o) =>
+              <Order key={o.orderId} order={o} className="order"/>) : 
+              //No order case
+              <div>
+                <h1 className='text-center'> No Orders</h1> 
+              </div>
+            }
+          </Row>
+        </div>   
+        <div className="paginationclass">
+          <ReactPaginate
+            previousLabel={"Previous"}
+            nextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"paginationBttns"}
+            previousLinkClassName={"previousBttn"}
+            nextLinkClassName={"nextBttn"}
+            disabledClassName={"paginationDisabled"}
+            activeClassName={"paginationActive"}
+          />
+      </div>
+    </div>
     )
 }
-
 export default AllOrder
