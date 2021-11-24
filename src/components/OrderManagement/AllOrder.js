@@ -59,15 +59,23 @@ return (
         </div>   
         <div className="paginationclass">
           <ReactPaginate
-            previousLabel={"Previous"}
-            nextLabel={"Next"}
-            pageCount={pageCount}
-            onPageChange={changePage}
-            containerClassName={"paginationBttns"}
-            previousLinkClassName={"previousBttn"}
-            nextLinkClassName={"nextBttn"}
-            disabledClassName={"paginationDisabled"}
-            activeClassName={"paginationActive"}
+           previousLabel={'Prev'}
+           nextLabel={'Next'}
+           breakLabel={'...'}
+           pageCount={pageCount}
+           marginPagesDisplayed={2}
+           pageRangeDisplayed={3}
+           onPageChange={changePage}
+           containerClassName={'pagination justify-content-center'}
+           pageClassName={'page-item'}
+           pageLinkClassName={'page-link'}
+           previousClassName={'page-link'}
+           previousLinkClassName={'page-item'}
+           nextClassName={'page-link'}
+           nextLinkClassName={'page-item'}
+           breakClassName={'page-link'}
+           breakLinkClassName={'page-item'}
+           activeClassName={'active'}
           />
       </div>
     </div>
