@@ -15,7 +15,10 @@ const Product = ({childToParent}) => {
     const [product,setProduct]= useState([]);
     
     const [paginatedProduct,setpaginatedPproduct]= useState([]);
-     
+    const [pageNumber, setPageNumber] = useState(0);
+    const userPerPage = 3;     
+    const pageCount = Math.ceil(product.length / userPerPage);
+    const pagesVisited = pageNumber * userPerPage;
 
     useEffect(() => {
       
@@ -50,13 +53,9 @@ const Product = ({childToParent}) => {
         
         };
 
-    const pageCount = product? Math.ceil(product.length/pageSize) :0;
-    if(pageCount === 1) return null;
-    const pages = _.range(1,pageCount+1) ;
-
-    const handlePageClick = (data)=>{
-      console.log(data.selected);
-    }
+    const handlePageClick = ({ selected }) => {
+      setPageNumber(selected);
+    };
 
     return (
         <Container style={{marginTop:15}}>
@@ -74,7 +73,8 @@ const Product = ({childToParent}) => {
                      </thead>
                      <tbody>
                      {
-                         product.map(o =>
+                        //  product.map(o =>
+                        product.length > 0 ? product.slice(pagesVisited, pagesVisited + userPerPage).map((o) =>
                              <tr key={o.id}>
                                  <td><img src={o.imageUrl} className="img-responsive"/></td>
                                  <td>{o.id}</td>
@@ -89,7 +89,10 @@ const Product = ({childToParent}) => {
                                  <td><Button color="danger" onClick={()=>deleteP(o)}>Delete</Button></td>
                                  
                              </tr>
-                         )
+                         ):
+                         <div>
+                <h1 className='text-center'> No Orders</h1> 
+              </div>
                      }
                      </tbody>
                  </Table>
@@ -98,7 +101,7 @@ const Product = ({childToParent}) => {
                    previousLabel={'Prev'}
                    nextLabel={'Next'}
                    breakLabel={'...'}
-                   pageCount={15}
+                   pageCount={pageCount}
                    marginPagesDisplayed={2}
                    pageRangeDisplayed={3}
                    onPageChange={handlePageClick}
