@@ -9,3 +9,33 @@
     height: 100px;
     width: 100px;
 }
+
+.productContainer{
+    
+    background-color: whitesmoke;
+    width: 100%;
+    
+}
+
+.addproduct{
+    color: tomato;
+    align-content: center;
+    background-color: turquoise;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.paginationclass1{
+    position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+
+.addproductbutton{
+    color: tomato;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    justify-content: center;
+}

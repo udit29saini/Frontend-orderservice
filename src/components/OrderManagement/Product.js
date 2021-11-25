@@ -89,53 +89,61 @@ const Product = ({childToParent}) => {
     };
 
     return (
-        <Container style={{marginTop:15}}>
-          <h1 className="text-center">ADD PRODDUCT</h1>
-       <Table striped bordered hover style={{textAlign: "center"}}>
-                     <thead>
-                     <tr>
-                         <th>Image</th>
-                         <th>Product ID</th>
-                         <th>Product Name</th>
-                         <th>Price</th>
-                         <th>Category</th>
-                         <th></th>
-                         <th></th>
-                         <th>count</th>
-                     </tr>
-                     </thead>
-                     <tbody>
-                     {
-                        //  product.map(o =>
-                        product.length > 0 ? product.slice(pagesVisited, pagesVisited + userPerPage).map((o) =>
-                             <tr key={o.id}>
-                                 <td><img src={o.imageUrl} className="img-responsive"/></td>
-                                 <td>{o.id}</td>
-                                 <td>{o.name}</td>
-                                 <td>₹. {o.price}</td>
-                                 <td>{o.categoryId[0]}</td>
-                                 <td>
-                                 <Button onClick={()=>addP(o)} color="primary" >ADD</Button>
-                                 </td>
-                                 <td><Button color="danger" onClick={()=>deleteP(o)}>Delete</Button></td>
-                                 <td>{()=>countP(o)}</td>
-                                 
-                             </tr>
-                         ):
-                         <div>
-                {/* <h1 className='text-center'></h1>  */}
+      <div>
+        <div className="productContainer">
+          <div className="addproductbutton">
+          ADD PRODDUCT
+          <Button  color="success" onClick={openForm}>NEXT</Button>
+          </div>
+          
+            <Table striped bordered hover style={{textAlign: "center"}}>
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Product ID</th>
+                  <th>Product Name</th>
+                  <th>Price</th>
+                  <th>Category</th>
+                  <th></th>
+                  <th></th>
+                  <th>count</th>
+              </tr>
+              </thead>
+              <tbody>
+              {
+                //  product.map(o =>
+                product.length > 0 ? product.slice(pagesVisited, pagesVisited + userPerPage).map((o) =>
+                      <tr key={o.id}>
+                          <td><img src={o.imageUrl} className="img-responsive"/></td>
+                          <td>{o.id}</td>
+                          <td>{o.name}</td>
+                          <td>₹. {o.price}</td>
+                          <td>{o.categoryId[0]}</td>
+                          <td>
+                          <Button onClick={()=>addP(o)} color="primary" >ADD</Button>
+                          </td>
+                          <td><Button color="danger" onClick={()=>deleteP(o)}>Delete</Button></td>
+                          <td>{()=>countP(o)}</td>
+                          
+                      </tr>
+                  ):
+                  <div>
+        {/* <h1 className='text-center'></h1>  */}
               </div>
                      }
                      </tbody>
                  </Table>
                  <Container style={{marginBottom:10}} className="text-center">
-                 <Button  color="success" onClick={openForm}>NEXT</Button>
+                 
                  </Container>
-                 <div>
+                 
+      </div>
+                 
+                 <div className="paginationclass1">
                    <ReactPaginate
                    previousLabel={'Prev'}
                    nextLabel={'Next'}
-                   breakLabel={'...'}
+                   breakLabe={'...'}
                    pageCount={pageCount}
                    marginPagesDisplayed={2}
                    pageRangeDisplayed={3}
@@ -154,8 +162,7 @@ const Product = ({childToParent}) => {
 
                    </ReactPaginate>
                  </div>
-                 </Container>
-                 
+                 </div>
     )
 }
 
