@@ -17,8 +17,8 @@
     return (
         <Card className="cardClass">
           
-          <CardHeader className="text-center">Order ID: {props.order.orderId}</CardHeader>
-          <Row>
+          <CardHeader className="cardheader"><h5>Order ID: {props.order.orderId}</h5></CardHeader>
+          <Row className="orderrow">
             <Col sm={4}>
               <h3>Personal Details:</h3>
               <CardTitle >NAME: {props.order.nameCustomer}</CardTitle>
@@ -33,7 +33,12 @@
             </Col>
             <Col sm={3}>
               <h3>Payment Information:</h3>
-              <CardTitle >PAYMENT STATUS: {props.order.paymentStatus.toString()}</CardTitle>
+              {
+                props.order.paymentStatus==true?
+                <CardTitle >PAYMENT STATUS: Prepaid</CardTitle>:
+                <CardTitle >PAYMENT STATUS: Postpaid</CardTitle>
+              }
+              
               <CardTitle >Total cost: {props.order.orderCost}</CardTitle>
             </Col>
             <Col sm={1}>
