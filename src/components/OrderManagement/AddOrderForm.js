@@ -52,7 +52,7 @@ const AddOrderForm = (pro) => {
        <Form  style={{marginLeft:10, marginTop:50}}  onSubmit={handleForm}>
        
        <FormGroup>
-               <Label ><h3>Name:</h3></Label>
+               <Label ><h4>Name:</h4></Label>
                <Input 
                required
                id="nameCustomer"
@@ -64,7 +64,7 @@ const AddOrderForm = (pro) => {
            </FormGroup >
     
            <FormGroup>
-               <Label><h4>SHIPPING ADDRESS:</h4></Label>
+               <Label><h5>SHIPPING ADDRESS:</h5></Label>
                <Input
                required
                id="	shipping address"
@@ -75,7 +75,7 @@ const AddOrderForm = (pro) => {
                />
            </FormGroup>
            <FormGroup>
-               <Label><h4>BILLING ADDRESS:</h4></Label>
+               <Label><h5>BILLING ADDRESS:</h5></Label>
                <Input
                required
                id="shippingAddress"

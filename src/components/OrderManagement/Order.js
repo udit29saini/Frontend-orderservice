@@ -5,7 +5,7 @@
   import AddModal from './AddModal';
   import { render } from '@testing-library/react';
   import EditModal from './EditModal';
-  import "./order.css";
+  //import "./order.css";
   const Order = (props) => {
     const editB = () => {
       console.log("order", props.order)
@@ -15,8 +15,8 @@
     }
 
     return (
+
         <Card className="cardClass">
-          
           <CardHeader className="text-center">Order ID: {props.order.orderId}</CardHeader>
           <Row>
             <Col sm={4}>

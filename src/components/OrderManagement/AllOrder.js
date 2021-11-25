@@ -1,12 +1,12 @@
 import React from 'react'
-import "./AllOrder.css";
+//import "./AllOrder.css";
 import { useState, useEffect } from 'react'
 import Order from "./Order";
 import { Col, Row } from 'reactstrap'
 import base_url from './Api';
 import axios from 'axios';
 import ReactPaginate from "react-paginate";
-// import "./AllOrder.css";
+ import "./AllOrder.css";
 import Footer1 from './Footer1';
 import pexel from "./pexels-jess-bailey-designs-743986.jpg"
 
@@ -44,9 +44,9 @@ const AllOrder = () => {
   console.log("state", orders);
 
 return (
-      <div className="fullpage">
-        <div className="orders">
-          <Row className="roworder">
+      <div >
+        <div>
+          <Row style={{marginTop:50,marginLeft:150,marginRight:150}} >
             {
               orders.length > 0 ? orders.slice(pagesVisited, pagesVisited + usersPerPage).map((o) =>
               <Order key={o.orderId} order={o} className="order"/>) : 
@@ -57,7 +57,7 @@ return (
             }
           </Row>
         </div>   
-        <div className="paginationclass">
+        <div style={{marginTop:10}}>
           <ReactPaginate
            previousLabel={'Prev'}
            nextLabel={'Next'}

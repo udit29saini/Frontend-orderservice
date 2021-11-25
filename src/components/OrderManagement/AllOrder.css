@@ -6,12 +6,16 @@
 
 .orders{
     background-color: red;
+    margin-top: 50;
     
 }
 
 .roworder{
     background-color: royalblue;
     color: brown;
+    margin-top: 50;
+    margin-left: 150;
+    margin-right: 150;
     
 }
 
@@ -19,6 +23,7 @@
     background-color: royalblue;
     color: brown;
     display: none;
+    
 }
 .paginationBttns {
     position: fixed;
