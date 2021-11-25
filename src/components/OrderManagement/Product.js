@@ -2,11 +2,17 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import { render } from 'react-dom';
 import { renderIntoDocument } from 'react-dom/test-utils';
+
 import { Card,Row,Col,CardHeader,CardTitle,Button,CardImg,Table, Container } from 'reactstrap';
 import AddModal from './AddModal';
 import AddOrderForm from './AddOrderForm';
 import EditModal from './EditModal';
 import './product.css'
+import _ from "lodash" ;
+import axios from "axios";
+import ReactPaginate from 'react-paginate';
+
+const pageSize = 3;
 
 const Product = ({childToParent}) => {
 
@@ -18,8 +24,15 @@ const Product = ({childToParent}) => {
         <AddModal pro={createP} />
       )
     }
+    
+    const [paginatedProduct,setpaginatedPproduct]= useState([]);
+    const [pageNumber, setPageNumber] = useState(0);
+    const userPerPage = 3;     
+    const pageCount = Math.ceil(product.length / userPerPage);
+    const pagesVisited = pageNumber * userPerPage;
 
     useEffect(() => {
+      
       document.title = "view order";
       getAllProduct();
     }, []);
@@ -31,10 +44,11 @@ const Product = ({childToParent}) => {
         const res = await fetch(url);
         const data = await res.json();
         setProduct(data);
+        setpaginatedPproduct(_(data).slice(0).take(pageSize).value()) ;
         console.log("ordes", product);
       } catch (error) {
         console.log(error);
-      }
+      }      
     };
       
       const addP=(o)=>{
@@ -70,6 +84,9 @@ const Product = ({childToParent}) => {
         }
 
 
+    const handlePageClick = ({ selected }) => {
+      setPageNumber(selected);
+    };
 
     return (
         <Container style={{marginTop:15}}>
@@ -85,13 +102,12 @@ const Product = ({childToParent}) => {
                          <th></th>
                          <th></th>
                          <th>count</th>
-                        
-
                      </tr>
                      </thead>
                      <tbody>
                      {
-                         product.map(o =>
+                        //  product.map(o =>
+                        product.length > 0 ? product.slice(pagesVisited, pagesVisited + userPerPage).map((o) =>
                              <tr key={o.id}>
                                  <td><img src={o.imageUrl} className="img-responsive"/></td>
                                  <td>{o.id}</td>
@@ -105,14 +121,41 @@ const Product = ({childToParent}) => {
                                  <td>{()=>countP(o)}</td>
                                  
                              </tr>
-                         )
+                         ):
+                         <div>
+                <h1 className='text-center'> No Orders</h1> 
+              </div>
                      }
                      </tbody>
                  </Table>
-                 <Container className="text-center">
+                 <Container style={{marginBottom:10}} className="text-center">
                  <Button  color="success" onClick={openForm}>NEXT</Button>
                  </Container>
+                 <div>
+                   <ReactPaginate
+                   previousLabel={'Prev'}
+                   nextLabel={'Next'}
+                   breakLabel={'...'}
+                   pageCount={pageCount}
+                   marginPagesDisplayed={2}
+                   pageRangeDisplayed={3}
+                   onPageChange={handlePageClick}
+                   containerClassName={'pagination justify-content-center'}
+                   pageClassName={'page-item'}
+                   pageLinkClassName={'page-link'}
+                   previousClassName={'page-link'}
+                   previousLinkClassName={'page-item'}
+                   nextClassName={'page-link'}
+                   nextLinkClassName={'page-item'}
+                   breakClassName={'page-link'}
+                   breakLinkClassName={'page-item'}
+                   activeClassName={'active'}
+                   >
+
+                   </ReactPaginate>
+                 </div>
                  </Container>
+                 
     )
 }
 
