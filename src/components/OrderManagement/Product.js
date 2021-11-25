@@ -91,7 +91,7 @@ const Product = ({childToParent}) => {
                              </tr>
                          ):
                          <div>
-                <h1 className='text-center'> No Orders</h1> 
+                {/* <h1 className='text-center'></h1>  */}
               </div>
                      }
                      </tbody>
