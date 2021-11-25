@@ -31,6 +31,7 @@ const Product = ({childToParent}) => {
     const pageCount = Math.ceil(product.length / userPerPage);
     const pagesVisited = pageNumber * userPerPage;
 
+    var x=0;
     useEffect(() => {
       
       document.title = "view order";
@@ -55,6 +56,7 @@ const Product = ({childToParent}) => {
        
           //createP.push(o);
           setCreateP([...createP,o]);
+          x++;
           //childToParent(createP);
           
       };
@@ -63,7 +65,7 @@ const Product = ({childToParent}) => {
         const newP = createP.filter(e=> o.id !== e.id);
        setCreateP(newP);
        //childToParent(createP);
-        
+        x--;
         };
 
         const sendP=()=>{
@@ -92,8 +94,12 @@ const Product = ({childToParent}) => {
       <div>
         <div className="productContainer">
           <div className="addproductbutton">
-          ADD PRODDUCT
-          <Button  color="success" onClick={openForm}>NEXT</Button>
+            <div className="heading" >
+              <h1>ADD PRODUCT</h1>
+            </div>
+            <div className="button">
+              <Button  className="submitbutton" onClick={openForm}>Proceed Order</Button>
+            </div>
           </div>
           
             <Table striped bordered hover style={{textAlign: "center"}}>
@@ -104,8 +110,8 @@ const Product = ({childToParent}) => {
                   <th>Product Name</th>
                   <th>Price</th>
                   <th>Category</th>
-                  <th></th>
-                  <th></th>
+                  <th>Add Product</th>
+                  <th>Remove Product</th>
                   <th>count</th>
               </tr>
               </thead>
@@ -114,7 +120,7 @@ const Product = ({childToParent}) => {
                 //  product.map(o =>
                 product.length > 0 ? product.slice(pagesVisited, pagesVisited + userPerPage).map((o) =>
                       <tr key={o.id}>
-                          <td><img src={o.imageUrl} className="img-responsive"/></td>
+                          <td><img src="https://cdn0.wideopenpets.com/wp-content/uploads/2017/03/AdobeStock_83729458.jpeg" className="img-responsive"/></td>
                           <td>{o.id}</td>
                           <td>{o.name}</td>
                           <td>₹. {o.price}</td>
@@ -123,7 +129,7 @@ const Product = ({childToParent}) => {
                           <Button onClick={()=>addP(o)} color="primary" >ADD</Button>
                           </td>
                           <td><Button color="danger" onClick={()=>deleteP(o)}>Delete</Button></td>
-                          <td>{()=>countP(o)}</td>
+                          <td>{()=>countP(o)}{x}</td>
                           
                       </tr>
                   ):
