@@ -33,7 +33,12 @@
             </Col>
             <Col sm={3}>
               <h3>Payment Information:</h3>
-              <CardTitle >PAYMENT STATUS: {props.order.paymentStatus.toString()}</CardTitle>
+              {
+                props.order.paymentStatus==true?
+                <CardTitle >PAYMENT STATUS: Prepaid</CardTitle>:
+                <CardTitle >PAYMENT STATUS: Postpaid</CardTitle>
+              }
+              
               <CardTitle >Total cost: {props.order.orderCost}</CardTitle>
             </Col>
             <Col sm={1}>
