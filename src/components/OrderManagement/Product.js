@@ -18,7 +18,10 @@ const Product = ({childToParent}) => {
 
     const [createP, setCreateP]=useState([]);
     const [product,setProduct]= useState([]);
-   
+    
+    const [count, setCount] = useState([]);
+
+
     const openForm = () => {
       renderIntoDocument(
         <AddModal pro={createP} />
@@ -31,7 +34,7 @@ const Product = ({childToParent}) => {
     const pageCount = Math.ceil(product.length / userPerPage);
     const pagesVisited = pageNumber * userPerPage;
 
-    var x=0;
+    
     useEffect(() => {
       
       document.title = "view order";
@@ -45,6 +48,8 @@ const Product = ({childToParent}) => {
         const res = await fetch(url);
         const data = await res.json();
         setProduct(data);
+        setCount(data);
+        
         setpaginatedPproduct(_(data).slice(0).take(pageSize).value()) ;
         console.log("ordes", product);
       } catch (error) {
@@ -54,9 +59,8 @@ const Product = ({childToParent}) => {
       
       const addP=(o)=>{
        
-          //createP.push(o);
+          //createP.push(o)
           setCreateP([...createP,o]);
-          x++;
           //childToParent(createP);
           
       };
@@ -65,7 +69,7 @@ const Product = ({childToParent}) => {
         const newP = createP.filter(e=> o.id !== e.id);
        setCreateP(newP);
        //childToParent(createP);
-        x--;
+        
         };
 
         const sendP=()=>{
@@ -79,10 +83,8 @@ const Product = ({childToParent}) => {
             {
                count++;
             }
-            return count;
-            
             })
-
+            return count;
         }
 
 
@@ -102,10 +104,10 @@ const Product = ({childToParent}) => {
             </div>
           </div>
           
-            <Table striped bordered hover style={{textAlign: "center"}}>
+            <Table className="table">
               <thead>
                 <tr>
-                  <th>Image</th>
+                  <th >Image</th>
                   <th>Product ID</th>
                   <th>Product Name</th>
                   <th>Price</th>
@@ -126,11 +128,12 @@ const Product = ({childToParent}) => {
                           <td>₹. {o.price}</td>
                           <td>{o.categoryId[0]}</td>
                           <td>
-                          <Button onClick={()=>addP(o)} color="primary" >ADD</Button>
+                            <Button onClick={()=>addP(o)} color="primary" >ADD</Button>
                           </td>
-                          <td><Button color="danger" onClick={()=>deleteP(o)}>Delete</Button></td>
-                          <td>{()=>countP(o)}{x}</td>
-                          
+                          <td>
+                            <Button color="danger" onClick={()=>deleteP(o)}>Delete</Button>
+                          </td>
+                          <td>0</td>
                       </tr>
                   ):
                   <div>
@@ -146,24 +149,24 @@ const Product = ({childToParent}) => {
       </div>
                  
                  <div className="paginationclass1">
-                   <ReactPaginate
-                   previousLabel={'Prev'}
+                   <ReactPaginate className="paginatebuttons"
+                   previousLabel="Prev"
                    nextLabel={'Next'}
                    breakLabe={'...'}
                    pageCount={pageCount}
                    marginPagesDisplayed={2}
                    pageRangeDisplayed={3}
                    onPageChange={handlePageClick}
-                   containerClassName={'pagination justify-content-center'}
-                   pageClassName={'page-item'}
-                   pageLinkClassName={'page-link'}
-                   previousClassName={'page-link'}
-                   previousLinkClassName={'page-item'}
-                   nextClassName={'page-link'}
-                   nextLinkClassName={'page-item'}
-                   breakClassName={'page-link'}
-                   breakLinkClassName={'page-item'}
-                   activeClassName={'active'}
+                   containerClassName="boxes"
+                   pageClassName="page-item"
+                   pageLinkClassName="page-link"
+                   previousClassName="page-link"
+                   previousLinkClassName="page-item"
+                   nextClassName="page-link"
+                   nextLinkClassName="page-item"
+                   breakClassName="page-link"
+                   breakLinkClassName="page-item"
+                   activeClassName="active"
                    >
 
                    </ReactPaginate>
