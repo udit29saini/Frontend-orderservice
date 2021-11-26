@@ -15,13 +15,11 @@ import ReactPaginate from 'react-paginate';
 const pageSize = 3;
 
 const Product = ({childToParent}) => {
-
+  
     const [createP, setCreateP]=useState([]);
     const [product,setProduct]= useState([]);
-    
-    const [count, setCount] = useState([]);
-
-
+    const [count, setCount]=useState(0);
+   
     const openForm = () => {
       renderIntoDocument(
         <AddModal pro={createP} />
@@ -48,7 +46,7 @@ const Product = ({childToParent}) => {
         const res = await fetch(url);
         const data = await res.json();
         setProduct(data);
-        setCount(data);
+        //setCount(data);
         
         setpaginatedPproduct(_(data).slice(0).take(pageSize).value()) ;
         console.log("ordes", product);

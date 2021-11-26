@@ -1,8 +1,6 @@
 import React from 'react'
 import { Container, Form, FormGroup, Input, Label,Button,Modal } from 'react-bootstrap'
 import { useState } from 'react';
-import FormUpdate from './EditOrder';
-import AddOrder from './AddOrder';
 import AddOrderForm from './AddOrderForm';
 
 const AddModal = (props) => {

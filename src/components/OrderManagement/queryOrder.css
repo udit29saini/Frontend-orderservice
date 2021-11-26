@@ -1,0 +1,25 @@
+.main{
+
+}
+.form{
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+.col1{
+    margin-left: 240px;
+    margin-top: 20px;
+}
+.input1{
+    width: 300px;
+    height: 40px;
+    margin-right: 50px;
+}
+.input2{
+    width: 300px;
+    height: 40px;
+    margin-right: 50px;
+}
+.col2{
+    margin-top: 20px;
+    margin-right: 190px;
+}

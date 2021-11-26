@@ -6,7 +6,7 @@ import { Col, Row } from 'reactstrap'
 import base_url from './Api';
 import axios from 'axios';
 import ReactPaginate from "react-paginate";
- import "./AllOrder.css";
+import "./AllOrder.css";
 import Footer1 from './Footer1';
 import pexel from "./pexels-jess-bailey-designs-743986.jpg"
 
@@ -46,18 +46,18 @@ const AllOrder = () => {
 return (
       <div >
         <div>
-          <Row style={{marginTop:50,marginLeft:150,marginRight:150}} >
+          <Row  className="roworder" >
             {
               orders.length > 0 ? orders.slice(pagesVisited, pagesVisited + usersPerPage).map((o) =>
               <Order key={o.orderId} order={o} className="order"/>) : 
-              //No order case
+              
               <div>
                 <h1 className='text-center'> No Orders</h1> 
               </div>
             }
           </Row>
         </div>   
-        <div style={{marginTop:10}}>
+        <div className= "paginationBttns">
           <ReactPaginate
            previousLabel={'Prev'}
            nextLabel={'Next'}

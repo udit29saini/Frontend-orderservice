@@ -4,12 +4,14 @@ import { useState } from 'react';
 import axios from 'axios';
 import base_url from './Api';
 
-const FormUpdate = () => {
+const FormUpdate = (props) => {
 
-     const [order, setOrder] = useState({});
+    console.log("orderI",props.odId)
+     const [order, setOrder] = useState({orderId:props.odId});
 
     const handleForm=(e)=>{
 
+        setOrder({...order, orderId: props.odId})
         console.log(order);
         e.preventDefault();
     }
@@ -66,17 +68,17 @@ const FormUpdate = () => {
                />
            </FormGroup>
            
-           <FormGroup>
+           {/* <FormGroup>
                <Label>ORDER ID</Label>
                <Input
                id="order_id"
                name="order_id"
-               placeholder="enter here"
-               type="text" 
-               style={{width: 200}} 
-               onChange={(e)=>{setOrder({...order, orderId: e.target.value})}}
+            //    placeholder="enter here"
+            //    type="text" 
+            //    style={{width: 200}} 
+               onChange={(e)=>{setOrder({...order, orderId: props.odId})}}
                />
-           </FormGroup>
+           </FormGroup> */}
            <Container className="text-center">
                <Button type='submit' color="success" onClick={updateData}>SUBMIT</Button>
            </Container>
