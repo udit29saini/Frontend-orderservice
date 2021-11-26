@@ -15,9 +15,10 @@ import ReactPaginate from 'react-paginate';
 const pageSize = 3;
 
 const Product = ({childToParent}) => {
-
+  
     const [createP, setCreateP]=useState([]);
     const [product,setProduct]= useState([]);
+    const [count, setCount]=useState(0);
    
     const openForm = () => {
       renderIntoDocument(
@@ -71,15 +72,15 @@ const Product = ({childToParent}) => {
         }
 
         const countP=(o)=>{
-          let count=0;
-          createP.map(item=>{
-            if(item.id===o.id)
-            {
-               count++;
-            }
-            return count;
+          
+          // createP.map(item=>{
+          //   if(item.id===o.id)
+          //   {
+          //      count++;
+          //   }
             
-            })
+          //   })
+          //   return count;
 
         }
 
@@ -89,7 +90,7 @@ const Product = ({childToParent}) => {
     };
 
     return (
-        <Container style={{marginTop:15}}>
+        <Container className="main">
           <h1 className="text-center">ADD PRODDUCT</h1>
        <Table striped bordered hover style={{textAlign: "center"}}>
                      <thead>
@@ -99,8 +100,8 @@ const Product = ({childToParent}) => {
                          <th>Product Name</th>
                          <th>Price</th>
                          <th>Category</th>
-                         <th></th>
-                         <th></th>
+                         <th>Add Product</th>
+                         <th>Remove Product</th>
                          <th>count</th>
                      </tr>
                      </thead>
@@ -109,16 +110,16 @@ const Product = ({childToParent}) => {
                         //  product.map(o =>
                         product.length > 0 ? product.slice(pagesVisited, pagesVisited + userPerPage).map((o) =>
                              <tr key={o.id}>
-                                 <td><img src={o.imageUrl} className="img-responsive"/></td>
+                                 <td><img src="https://picsum.photos/200" className="img-responsive"/></td>
                                  <td>{o.id}</td>
                                  <td>{o.name}</td>
                                  <td>₹. {o.price}</td>
                                  <td>{o.categoryId[0]}</td>
                                  <td>
-                                 <Button onClick={()=>addP(o)} color="primary" >ADD</Button>
+                                 <Button onClick={()=>addP(o)} color="primary" >ADD{count}</Button>
                                  </td>
                                  <td><Button color="danger" onClick={()=>deleteP(o)}>Delete</Button></td>
-                                 <td>{()=>countP(o)}</td>
+                                 <td>{()=>countP(o)}{count}</td>
                                  
                              </tr>
                          ):
@@ -128,7 +129,7 @@ const Product = ({childToParent}) => {
                      }
                      </tbody>
                  </Table>
-                 <Container style={{marginBottom:10}} className="text-center">
+                 <Container className="text-center button">
                  <Button  color="success" onClick={openForm}>NEXT</Button>
                  </Container>
                  <div>
