@@ -1,62 +1,108 @@
-  import React from 'react'
-  import { Card, Col, CardTitle, Button, Modal, CardHeader, Row, Container } from 'reactstrap'
-  import 'bootstrap/dist/css/bootstrap.min.css';
-  import AddOrder from './AddOrder';
-  import AddModal from './AddModal';
-  import { render } from '@testing-library/react';
-  import EditModal from './EditModal';
-  import "./order.css";
-  const Order = (props) => {
-    const editB = () => {
-      console.log("order123", props.order)
-      render(
-        <EditModal oId={props.order.orderId} />
-      )
-    }
-
-    return (
-
-        <Card className="cardClass">
-          <CardHeader className="text-center">Order ID: {props.order.orderId}</CardHeader>
-          <Row>
-            <Col sm={4}>
-              <h3>Personal Details:</h3>
-              <CardTitle >NAME: {props.order.nameCustomer}</CardTitle>
-              <CardTitle >Email ID: {props.order.email}</CardTitle>
-              <CardTitle >MOBILE NO: {props.order.mobileNumber}</CardTitle>
-            </Col>
-            <Col sm={4}>
-              <h3>ADDRESS:</h3>
-              <CardTitle >SHIPPING ADDRESS: {props.order.shippingAddress}</CardTitle>
-              <CardTitle >BILLING ADDRESS: {props.order.billingAddress}</CardTitle>
-              <CardTitle >order date: {props.order.orderDate}</CardTitle>
-            </Col>
-            <Col sm={3}>
-              <h3>Payment Information:</h3>
-              {
-                props.order.paymentStatus==true?
-                <CardTitle >PAYMENT STATUS: Prepaid</CardTitle>:
-                <CardTitle >PAYMENT STATUS: Postpaid</CardTitle>
-              }
-              
-              <CardTitle >Total cost: {props.order.orderCost}</CardTitle>
-            </Col>
-            <Col sm={1}>
-              <Row style={{ marginTop: 25, marginBottom: 20 }}>
-                <Button color="primary" onClick={editB} >UPDATE</Button>
-              </Row>
-              <Row>
-                <Button color="warning">Track Order</Button>
-              </Row>
-            </Col>
-          </Row>
-          <Container className="text-center">
-
-
-          </Container>
-
-        </Card>
+import React from 'react'
+import { Card, Col, CardTitle, Button, Modal, CardHeader, Row, Container } from 'reactstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import AddOrder from './AddOrder';
+import AddModal from './AddModal';
+import { render } from '@testing-library/react';
+import EditModal from './EditModal';
+import "./order.css";
+const Order = (props) => {
+  const editB = () => {
+    console.log("order123", props.order)
+    render(
+      <EditModal oId={props.order.orderId} />
     )
   }
 
-  export default Order
+  return (
+
+      // <Card className="cardClass">
+      //   <CardHeader className="abc">ORDER ID: {props.order.orderId}</CardHeader>
+      //   <Row className="rows">
+      //     <Col sm={4} className="cols1">
+      //       <h3 className="head">PERSONLA DETAILS:</h3>
+      //       <CardTitle className="cardTitle">Name: {props.order.nameCustomer}</CardTitle>
+      //       <CardTitle className="cardTitle">Email Id: {props.order.email}</CardTitle>
+      //       <CardTitle className="cardTitle">Mobile No: {props.order.mobileNumber}</CardTitle>
+      //     </Col>
+      //     <Col sm={4} className="cols2">
+      //       <h3 className="head">ADDRESS:</h3>
+      //       <CardTitle className="cardTitle">Shipping Address: {props.order.shippingAddress}</CardTitle>
+      //       <CardTitle className="cardTitle">Billing Address: {props.order.billingAddress}</CardTitle>
+      //       <CardTitle className="cardTitle">Order Date: {props.order.orderDate}</CardTitle>
+      //     </Col>
+      //     <Col sm={3} className="cols3">
+      //       <h3 className="head">PAYMENT INFO:</h3>
+      //       {
+      //         props.order.paymentStatus==true?
+      //         <CardTitle className="cardTitle">Payment Status: Prepaid</CardTitle>:
+      //         <CardTitle className="cardTitle">Payment Status: Postpaid</CardTitle>
+      //       }
+            
+      //       <CardTitle >Total Cost: {props.order.orderCost}</CardTitle>
+      //     </Col>
+      //     <Col sm={1}>
+      //       <Row className="buttonmargin">
+      //         <Button color="primary" onClick={editB} >UPDATE</Button>
+      //       </Row>
+      //       <Row className="buttonmargin">
+      //         <Button color="warning">Track Order</Button>
+      //       </Row>
+      //     </Col>
+      //   </Row>
+      //   <Container className="text-center">
+      //   </Container>
+      // </Card>
+      
+      <div className="background">
+      <div class="ui cards align center">
+        {
+              <div class="card">
+                <div class="content">
+                  <a class="header">ORDER ID: {props.order.orderId}</a>
+                  <div class="meta">
+                    <span class="date">Name: {props.order.nameCustomer}</span>
+                    <br/>
+                    <span class="date">Email Id: {props.order.email}</span>
+                    <br/>
+                    <span class="date">Mobile No: {props.order.mobileNumber}</span>
+                  </div>
+                  <div class="description">
+                  Shipping Address: {props.order.shippingAddress}
+                  <br/>
+                  Billing Address: {props.order.billingAddress}
+                  <br/>
+                  Order Date: {props.order.orderDate}
+                  </div>
+                </div>
+                <div class="extra content">
+                {props.order.paymentStatus==true?
+                  <a>
+               <CardTitle className="cardTitle">Payment Status: Prepaid</CardTitle>
+                  </a>:
+                  <a>
+                  <CardTitle className="cardTitle">Payment Status: Postpaid</CardTitle>
+                  </a>}
+                </div>
+                <div class="extra content">
+                  <div class="ui two buttons">
+                    <div class="positive ui button" onClick={editB} color="primary">UPDATE</div>
+                    {/* <Button onClick={()=>addP(o)} color="primary" >ADD</Button> */}
+
+                    <div class="negative ui button" >TRACK ORDER</div>
+                    {/* <Button color="danger" onClick={()=>deleteP(o)}>Delete</Button> */}
+                  </div>
+                </div>
+              </div>    
+            
+          }
+          </div>
+        </div>
+
+      
+      
+
+  )
+}
+
+export default Order
