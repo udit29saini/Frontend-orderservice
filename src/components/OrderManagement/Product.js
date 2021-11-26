@@ -18,8 +18,15 @@ const Product = ({childToParent}) => {
   
     const [createP, setCreateP]=useState([]);
     const [product,setProduct]= useState([]);
+<<<<<<< HEAD
     const [count, setCount]=useState(0);
    
+=======
+    
+    const [count, setCount] = useState([]);
+
+
+>>>>>>> b51d8da7d0002c34bb8e3883f475e035d84fb250
     const openForm = () => {
       renderIntoDocument(
         <AddModal pro={createP} />
@@ -32,6 +39,7 @@ const Product = ({childToParent}) => {
     const pageCount = Math.ceil(product.length / userPerPage);
     const pagesVisited = pageNumber * userPerPage;
 
+    
     useEffect(() => {
       
       document.title = "view order";
@@ -45,6 +53,8 @@ const Product = ({childToParent}) => {
         const res = await fetch(url);
         const data = await res.json();
         setProduct(data);
+        setCount(data);
+        
         setpaginatedPproduct(_(data).slice(0).take(pageSize).value()) ;
         console.log("ordes", product);
       } catch (error) {
@@ -54,7 +64,7 @@ const Product = ({childToParent}) => {
       
       const addP=(o)=>{
        
-          //createP.push(o);
+          //createP.push(o)
           setCreateP([...createP,o]);
           //childToParent(createP);
           
@@ -72,6 +82,7 @@ const Product = ({childToParent}) => {
         }
 
         const countP=(o)=>{
+<<<<<<< HEAD
           
           // createP.map(item=>{
           //   if(item.id===o.id)
@@ -82,6 +93,16 @@ const Product = ({childToParent}) => {
           //   })
           //   return count;
 
+=======
+          let count=0;
+          createP.map(item=>{
+            if(item.id===o.id)
+            {
+               count++;
+            }
+            })
+            return count;
+>>>>>>> b51d8da7d0002c34bb8e3883f475e035d84fb250
         }
 
 
@@ -90,6 +111,7 @@ const Product = ({childToParent}) => {
     };
 
     return (
+<<<<<<< HEAD
         <Container className="main">
           <h1 className="text-center">ADD PRODDUCT</h1>
        <Table striped bordered hover style={{textAlign: "center"}}>
@@ -125,38 +147,92 @@ const Product = ({childToParent}) => {
                          ):
                          <div>
                 {/* <h1 className='text-center'></h1>  */}
+=======
+      <div>
+        <div className="productContainer">
+          <div className="addproductbutton">
+            <div className="heading" >
+              <h1>ADD PRODUCT</h1>
+            </div>
+            <div className="button">
+              <Button  className="submitbutton" onClick={openForm}>Proceed Order</Button>
+            </div>
+          </div>
+          
+            <Table className="table">
+              <thead>
+                <tr>
+                  <th >Image</th>
+                  <th>Product ID</th>
+                  <th>Product Name</th>
+                  <th>Price</th>
+                  <th>Category</th>
+                  <th>Add Product</th>
+                  <th>Remove Product</th>
+                  <th>count</th>
+              </tr>
+              </thead>
+              <tbody>
+              {
+                //  product.map(o =>
+                product.length > 0 ? product.slice(pagesVisited, pagesVisited + userPerPage).map((o) =>
+                      <tr key={o.id}>
+                          <td><img src="https://cdn0.wideopenpets.com/wp-content/uploads/2017/03/AdobeStock_83729458.jpeg" className="img-responsive"/></td>
+                          <td>{o.id}</td>
+                          <td>{o.name}</td>
+                          <td>₹. {o.price}</td>
+                          <td>{o.categoryId[0]}</td>
+                          <td>
+                            <Button onClick={()=>addP(o)} color="primary" >ADD</Button>
+                          </td>
+                          <td>
+                            <Button color="danger" onClick={()=>deleteP(o)}>Delete</Button>
+                          </td>
+                          <td>0</td>
+                      </tr>
+                  ):
+                  <div>
+        {/* <h1 className='text-center'></h1>  */}
+>>>>>>> b51d8da7d0002c34bb8e3883f475e035d84fb250
               </div>
                      }
                      </tbody>
                  </Table>
+<<<<<<< HEAD
                  <Container className="text-center button">
                  <Button  color="success" onClick={openForm}>NEXT</Button>
+=======
+                 <Container style={{marginBottom:10}} className="text-center">
+                 
+>>>>>>> b51d8da7d0002c34bb8e3883f475e035d84fb250
                  </Container>
-                 <div>
-                   <ReactPaginate
-                   previousLabel={'Prev'}
+                 
+      </div>
+                 
+                 <div className="paginationclass1">
+                   <ReactPaginate className="paginatebuttons"
+                   previousLabel="Prev"
                    nextLabel={'Next'}
-                   breakLabel={'...'}
+                   breakLabe={'...'}
                    pageCount={pageCount}
                    marginPagesDisplayed={2}
                    pageRangeDisplayed={3}
                    onPageChange={handlePageClick}
-                   containerClassName={'pagination justify-content-center'}
-                   pageClassName={'page-item'}
-                   pageLinkClassName={'page-link'}
-                   previousClassName={'page-link'}
-                   previousLinkClassName={'page-item'}
-                   nextClassName={'page-link'}
-                   nextLinkClassName={'page-item'}
-                   breakClassName={'page-link'}
-                   breakLinkClassName={'page-item'}
-                   activeClassName={'active'}
+                   containerClassName="boxes"
+                   pageClassName="page-item"
+                   pageLinkClassName="page-link"
+                   previousClassName="page-link"
+                   previousLinkClassName="page-item"
+                   nextClassName="page-link"
+                   nextLinkClassName="page-item"
+                   breakClassName="page-link"
+                   breakLinkClassName="page-item"
+                   activeClassName="active"
                    >
 
                    </ReactPaginate>
                  </div>
-                 </Container>
-                 
+                 </div>
     )
 }
 
