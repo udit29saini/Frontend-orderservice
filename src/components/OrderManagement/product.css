@@ -1,31 +1,28 @@
-.product-header{
+.product-header {
     padding: 10px;
     display: flex;
     justify-content: center;
 }
-.img-responsive{
-    
+
+.img-responsive {
     margin: fill;
-    height: 150px;
+    height: 127px;
     width: 200px;
-    
 }
 
-.productContainer{
-    
+.productContainer {
     background-color: whitesmoke;
     width: 100%;
-    
 }
 
-.addproduct{
+.addproduct {
     color: tomato;
     align-content: center;
     background-color: turquoise;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.paginationclass1{
+.paginationclass1 {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -37,36 +34,61 @@
     margin-top: auto;
 }
 
+.paginatebuttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: whitesmoke;
+}
 
-.addproductbutton{
-    
+.page-link {
+    color: black;
+    background-color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-color: rgb(153, 93, 93);
+}
+
+.page-item {
+    color: black;
+    font-size: medium;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.boxes {
+    color: black;
+}
+
+.active {
+    color: brown;
+}
+
+.addproductbutton {
     color: indigo;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     display: flex;
     background-color: whitesmoke;
 }
 
-
-.button{
+.button {
     color: lawngreen;
-    
     margin-left: auto;
 }
 
-
-.submitbutton{
+.submitbutton {
     background-color: rgb(8, 175, 44);
     margin-top: 8%;
     margin-bottom: 5%;
     margin-right: 1rem;
 }
-.heading{
+
+.heading {
     align-self: center;
     justify-self: center;
     font-size: 190%;
     margin-left: 40%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: black;
+    color: b;
 }
 
 table {
