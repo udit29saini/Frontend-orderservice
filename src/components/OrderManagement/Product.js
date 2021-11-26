@@ -30,7 +30,7 @@ const Product = ({childToParent}) => {
     
     const [paginatedProduct,setpaginatedPproduct]= useState([]);
     const [pageNumber, setPageNumber] = useState(0);
-    const userPerPage = 3;     
+    const userPerPage = 4;     
     const pageCount = Math.ceil(product.length / userPerPage);
     const pagesVisited = pageNumber * userPerPage;
 
@@ -57,41 +57,61 @@ const Product = ({childToParent}) => {
       }      
     };
       
-      const addP=(o)=>{
-       
-          //createP.push(o)
-          setCreateP([...createP,o]);
-          //childToParent(createP);
-          
+
+    
+    const addP=(o)=>{
+      
+        //createP.push(o)
+        setCreateP([...createP,o]);
+        o.qty++;
+        //childToParent(createP);
+        
+    };
+
+    const deleteP=(o)=>{
+      const newP = createP.filter(e=> o.id !== e.id);
+      setCreateP(newP);
+      o.qty--;
+      //childToParent(createP);
+      
       };
 
-      const deleteP=(o)=>{
-        const newP = createP.filter(e=> o.id !== e.id);
-       setCreateP(newP);
-       //childToParent(createP);
-        
-        };
+      const sendP=()=>{
+        childToParent(createP)
+      }
 
-        const sendP=()=>{
-          childToParent(createP)
-        }
-
-        const countP=(o)=>{
-          let count=0;
-          createP.map(item=>{
-            if(item.id===o.id)
-            {
-               count++;
-            }
-            })
-            return count;
-        }
+      const countP=(o)=>{
+        let count=0;
+        createP.map(item=>{
+          if(item.id===o.id)
+          {
+              count++;
+          }
+          })
+          return count;
+      }
 
 
     const handlePageClick = ({ selected }) => {
       setPageNumber(selected);
     };
 
+    const modifiedArray = function(arr) {
+      
+      return arr.map(item => {
+        return {
+          id: item.id,
+          categoryId: item.categoryId,
+          descId: item.descId,
+          imageUrl : item.imageUrl,
+          name: item.name,
+          price:item.price,
+          qty:0
+        }; 
+      })  
+    }
+
+    const products=modifiedArray (product);
     return (
       <div>
         <div className="productContainer">
@@ -103,75 +123,109 @@ const Product = ({childToParent}) => {
               <Button  className="submitbutton" onClick={openForm}>Proceed Order</Button>
             </div>
           </div>
-          
-            <Table className="table">
-              <thead>
-                <tr>
-                  <th >Image</th>
-                  <th>Product ID</th>
-                  <th>Product Name</th>
-                  <th>Price</th>
-                  <th>Category</th>
-                  <th>Add Product</th>
-                  <th>Remove Product</th>
-                  <th>count</th>
-              </tr>
-              </thead>
-              <tbody>
-              {
-                //  product.map(o =>
-                product.length > 0 ? product.slice(pagesVisited, pagesVisited + userPerPage).map((o) =>
-                      <tr key={o.id}>
-                          <td><img src="https://cdn0.wideopenpets.com/wp-content/uploads/2017/03/AdobeStock_83729458.jpeg" className="img-responsive"/></td>
-                          <td>{o.id}</td>
-                          <td>{o.name}</td>
-                          <td>₹. {o.price}</td>
-                          <td>{o.categoryId[0]}</td>
-                          <td>
-                            <Button onClick={()=>addP(o)} color="primary" >ADD</Button>
-                          </td>
-                          <td>
-                            <Button color="danger" onClick={()=>deleteP(o)}>Delete</Button>
-                          </td>
-                          <td>0</td>
-                      </tr>
-                  ):
-                  <div>
-        {/* <h1 className='text-center'></h1>  */}
-              </div>
-                     }
-                     </tbody>
-                 </Table>
-                 <Container style={{marginBottom:10}} className="text-center">
-                 
-                 </Container>
-                 
-      </div>
-                 
-                 <div className="paginationclass1">
-                   <ReactPaginate className="paginatebuttons"
-                   previousLabel="Prev"
-                   nextLabel={'Next'}
-                   breakLabe={'...'}
-                   pageCount={pageCount}
-                   marginPagesDisplayed={2}
-                   pageRangeDisplayed={3}
-                   onPageChange={handlePageClick}
-                   containerClassName="boxes"
-                   pageClassName="page-item"
-                   pageLinkClassName="page-link"
-                   previousClassName="page-link"
-                   previousLinkClassName="page-item"
-                   nextClassName="page-link"
-                   nextLinkClassName="page-item"
-                   breakClassName="page-link"
-                   breakLinkClassName="page-item"
-                   activeClassName="active"
-                   >
 
-                   </ReactPaginate>
-                 </div>
-                 </div>
+          
+          <div class="ui cards align center">
+          {
+              products.length > 0 ? products.slice(pagesVisited, pagesVisited + userPerPage).map((o) =>
+                
+                <div class="card">
+                  <div class="image">
+                    <img src="https://cdn0.wideopenpets.com/wp-content/uploads/2017/03/AdobeStock_83729458.jpeg"/>
+                  </div>
+                  <div class="content">
+                    <a class="header">{o.name}</a>
+                    <div class="meta">
+                      <span class="date">{o.id}</span>
+                    </div>
+                    <div class="description">
+                      {o.categoryId[0]}
+                    </div>
+                  </div>
+                  <div class="extra content">
+                    <a>
+                        ₹. {o.price}
+                    </a>
+                  </div>
+                  <div class="extra content">
+                    <a>
+                        Number Of {o.name} in cart={o.qty}
+                    </a>
+                  </div>
+                  <div class="extra content">
+                    <div class="ui two buttons">
+                      <div class="positive ui button" onClick={()=>addP(o)} color="primary">Add</div>
+                      {/* <Button onClick={()=>addP(o)} color="primary" >ADD</Button> */}
+
+                      <div class="negative ui button" onClick={()=>deleteP(o)}>Remove</div>
+                      {/* <Button color="danger" onClick={()=>deleteP(o)}>Delete</Button> */}
+                    </div>
+                  </div>
+                </div>    
+              ):
+              <div></div>
+            }
+            
+          </div>
+          {/* <Table className="table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Add Product</th>
+                <th>Remove Product</th>
+                <th>count</th>
+            </tr>
+            </thead>
+            <tbody>
+            {
+              product.length > 0 ? product.slice(pagesVisited, pagesVisited + userPerPage).map((o) =>
+                <tr key={o.id}>
+                    <td><img src="https://cdn0.wideopenpets.com/wp-content/uploads/2017/03/AdobeStock_83729458.jpeg" className="img-responsive"/></td>
+                    <td>{o.id}</td>
+                    <td>{o.name}</td>
+                    <td>₹. {o.price}</td>
+                    <td>{o.categoryId[0]}</td>
+                    <td>
+                      <Button onClick={()=>addP(o)} color="primary" >ADD</Button>
+                    </td>
+                    <td>
+                      <Button color="danger" onClick={()=>deleteP(o)}>Delete</Button>
+                    </td>
+                    <td>0</td>
+                </tr>
+              ):
+              <div></div>
+            }
+            </tbody>
+          </Table> */}
+          <Container style={{marginBottom:10}} className="text-center"></Container>            
+        </div>         
+        <div className="paginationclass1">
+          <ReactPaginate className="paginatebuttons"
+          previousLabel="Prev"
+          nextLabel={'Next'}
+          breakLabe={'...'}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={3}
+          onPageChange={handlePageClick}
+          containerClassName="boxes"
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+          previousClassName="page-link"
+          previousLinkClassName="page-item"
+          nextClassName="page-link"
+          nextLinkClassName="page-item"
+          breakClassName="page-link"
+          breakLinkClassName="page-item"
+          activeClassName="active"
+          ></ReactPaginate>
+        </div>
+      </div>
     )
 }
 
