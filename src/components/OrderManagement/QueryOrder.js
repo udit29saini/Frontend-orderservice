@@ -7,6 +7,7 @@ import base_url from './Api';
 import AllOrder from './AllOrder';
 import Footer1 from './Footer1';
 import pexel from "./pexels-jess-bailey-designs-743986.jpg"
+import "./queryOrder.css"
 
 const QueryOrder = () => {
   useEffect(()=>{document.title="query order"; getAllOrder();},[]);
@@ -39,12 +40,6 @@ const QueryOrder = () => {
       }
     };
 
-    
-
-    // useEffect(()=>{
-    //    document.title="view order";
-       
-    //            },[]);
 
    const getAllOrder = async()=>{
        try {
@@ -62,15 +57,15 @@ const QueryOrder = () => {
     return (
         <div style={{backgroundImage: `url(${pexel})`}}>
         <Form  onSubmit={handleForm}>
-          <div className="border" style={{marginBottom:50, marginTop:50}}>
+          <div className="border form">
           <Row>
-            <Col style={{marginLeft:240, marginTop:20}}> <h2>Filter:</h2></Col>
+            <Col className="col1"> <h2>Filter:</h2></Col>
             <Col>
         <FormGroup >
     <Label for="exampleSelect">
     </Label>
     <Input
-    style={{width: 300,height:40, marginRight:50}} 
+    className="input1" 
       id="exampleSelect"
       name="select"
       type="select"
@@ -102,7 +97,7 @@ const QueryOrder = () => {
     </Label>
     <Input
     required
-    style={{width: 300,height:40, marginRight:100}} 
+    className="input2"
       id="criteria"
       name="criteria"
       placeholder= "Query criteria"
@@ -111,7 +106,7 @@ const QueryOrder = () => {
     />
         </FormGroup>
         </Col>
-        <Col style={{marginTop:20, marginRight:190}}>
+        <Col className="col2">
         <Container className="text-center">
                <Button type='submit' onClick={getQuery} color="success">SEARCH</Button>
            </Container>
@@ -120,25 +115,17 @@ const QueryOrder = () => {
            </div>
         </Form>
         
-        {/* <div><Row>
-            
-            {allorders.length>0? allorders.map((o)=>
-               
-             
-               <Order key={o.orderId} order={o} />
-
-            ) : <div><br /> <h1 className='text-center'> No Orders</h1> </ div>}
-            </Row>
-        </div> */}
         <div>
-          <Row style={{marginTop:50,marginLeft:150,marginRight:150}}>
+          <Row className="roworder">
             
             {orders.length>0? orders.map((o)=>
                
              
                <Order key={o.orderId} order={o} />
 
-            ) : allorders.map((o)=> <Order key={o.orderId} order={o} />)  }
+            ) : allorders.map((o)=> <Order key={o.orderId} order={o} />) 
+            
+            }
             </Row>
            
         </div>

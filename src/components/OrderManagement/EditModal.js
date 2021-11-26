@@ -1,10 +1,11 @@
 import React from 'react'
 import { Container, Form, FormGroup, Input, Label,Button,Modal } from 'react-bootstrap'
 import { useState } from 'react';
-import FormUpdate from './EditOrder';
+import FormUpdate from './FormUpdate';
 import AddOrderForm from './AddOrderForm';
 
-const EditModal = () => {
+const EditModal = (prop) => {
+    console.log("id",prop.oId)
 
     const [order, setOrder] = useState({});
     const[show , setShow] = useState(true)
@@ -25,7 +26,7 @@ const EditModal = () => {
                     <Modal.Title>Edit Order</Modal.Title>
                </Modal.Header>
                <Modal.Body>
-                    <FormUpdate />
+                    <FormUpdate odId={prop.oId} />
                </Modal.Body>
            </Modal>
       </div>

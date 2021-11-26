@@ -8,9 +8,9 @@
   //import "./order.css";
   const Order = (props) => {
     const editB = () => {
-      console.log("order", props.order)
+      console.log("order123", props.order)
       render(
-        <EditModal />
+        <EditModal oId={props.order.orderId} />
       )
     }
 

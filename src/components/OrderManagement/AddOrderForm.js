@@ -8,6 +8,7 @@ import Product from './Product';
 import ProductList from './ProductList';
 import Footer1 from './Footer1';
 import pexel from "./pexels-jess-bailey-designs-743986.jpg"
+import "./addOrder.css"
 
 const AddOrderForm = (pro) => {
 
@@ -18,7 +19,7 @@ const AddOrderForm = (pro) => {
     useEffect(() => { document.title = "add order"; }, []);
 
     const postData = (data) => {
-        axios.post(`http://localhost:8081/order/createorder`, data).then(
+        axios.post(`http://localhost:8091/order/createorder`, data).then(
             (response) => {
                 console.log("success", response);
                 //console.log(orders);
@@ -48,8 +49,8 @@ const AddOrderForm = (pro) => {
         <div style={{backgroundImage: `url(${pexel})`}}>
         <Row>
             
-            <div className="border" style={{marginBottom:15}} >
-       <Form  style={{marginLeft:10, marginTop:50}}  onSubmit={handleForm}>
+            <div className="border main" >
+       <Form  className="form"  onSubmit={handleForm}>
        
        <FormGroup>
                <Label ><h4>Name:</h4></Label>
@@ -58,7 +59,7 @@ const AddOrderForm = (pro) => {
                id="nameCustomer"
                name="nameCustomer"
                placeholder="enter here"
-               type="text" style={{width: 300}}
+               type="text" className="input1"
                onChange={(e)=>{setOrder({...order,nameCustomer: e.target.value})}}
                />
            </FormGroup >
@@ -70,7 +71,7 @@ const AddOrderForm = (pro) => {
                id="	shipping address"
                name="shipping address"
                placeholder="enter here"
-               type="text" style={{width: 450}} 
+               type="text" className="input3"
                onChange={(e)=>{setOrder({...order, billingAddress: e.target.value})}}
                />
            </FormGroup>
@@ -81,7 +82,7 @@ const AddOrderForm = (pro) => {
                id="shippingAddress"
                name="shippingAddress"
                placeholder="enter here"
-               type="text" style={{width: 450}}
+               type="text" className="input3"
                onChange={(e)=>{setOrder({...order,shippingAddress: e.target.value})}}
                />
            </FormGroup> 
@@ -90,7 +91,7 @@ const AddOrderForm = (pro) => {
            <FormGroup >
                <label><h5>Prepaid:</h5></label>
                 <input
-                style={{width: 30}}
+                className="input4"
                 type="checkbox"
                 name="subscription"
                 value="true"
@@ -100,7 +101,7 @@ const AddOrderForm = (pro) => {
       <FormGroup >
                <label><h5>Postpaid:</h5></label>
                 <input
-                style={{width: 30}}
+                className="input4"
                 type="checkbox"
                 name="subscription"
                 value="false"

@@ -18,16 +18,16 @@ const Nav1 = () => {
       View Order
     </NavLink>
     {''}
-    <NavLink href="/add-order">
+    {/* <NavLink href="/add-order">
       Add Order
     </NavLink>
-    {' '}
+    {' '} */}
     <NavLink href="query-order">
       Query Order
     </NavLink>
     {' '}
     <NavLink href="/Product">
-      Product
+      Add Order
     </NavLink>
     {' '}
     {/* <NavLink href="/Cart">

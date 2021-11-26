@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Form, FormGroup, Input, Label,Button,Modal } from 'react-bootstrap'
 import { useState } from 'react';
-import FormUpdate from './EditOrder';
+import FormUpdate from './FormUpdate';
 
 const InfoModal = () => {
 
