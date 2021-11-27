@@ -54,6 +54,7 @@
 }
 .background{
     background-color:whitesmoke;
+    width: 100%;
 }
 .heading {
     align-self: center;

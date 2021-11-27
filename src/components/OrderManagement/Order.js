@@ -55,8 +55,9 @@ const Order = (props) => {
       // </Card>
       
       <div className="background">
-      <div class="ui cards align center">
-        {
+        
+        <div class="ui cards align center">
+          {
               <div class="card">
                 <div class="content">
                   <a class="header">ORDER ID: {props.order.orderId}</a>
@@ -94,14 +95,9 @@ const Order = (props) => {
                   </div>
                 </div>
               </div>    
-            
           }
           </div>
         </div>
-
-      
-      
-
   )
 }
 

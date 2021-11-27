@@ -45,6 +45,11 @@ const AllOrder = () => {
 
 return (
       <div >
+        <div className="addproductbutton">
+            <div className="heading" >
+              <h1>ALL ORDERS</h1>
+            </div>
+          </div>
         <div>
           <Row  className="roworder" >
             {

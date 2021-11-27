@@ -12,9 +12,10 @@
 
 .roworder{
   
-    margin-top: 50px;
+    margin-top: 10px;
     margin-left: 150px;
     margin-right: 150px;
+    background-color: bisque;
     
 }
 
@@ -34,4 +35,19 @@
 }
 .paginationBttns{
     margin-top: 10px;
+}
+
+.addproductbutton {
+    color: indigo;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    display: flex;
+    background-color: whitesmoke;
+}
+.heading {
+    align-self: center;
+    justify-self: center;
+    font-size: 190%;
+    margin-left: 40%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: b;
 }
