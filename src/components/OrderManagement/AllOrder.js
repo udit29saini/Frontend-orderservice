@@ -51,7 +51,7 @@ return (
             </div>
           </div>
         <div>
-          <Row  className="roworder" >
+          <div className="roworder" >
             {
               orders.length > 0 ? orders.slice(pagesVisited, pagesVisited + usersPerPage).map((o) =>
               <Order key={o.orderId} order={o} className="order"/>) : 
@@ -60,7 +60,7 @@ return (
                 <h1 className='text-center'> No Orders</h1> 
               </div>
             }
-          </Row>
+          </div>
         </div>   
         <div className= "paginationBttns">
           <ReactPaginate

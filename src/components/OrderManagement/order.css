@@ -9,7 +9,7 @@
     /* color:black; */
     /* font-size: medium; */
     font-family: Georgia, 'Times New Roman', Times, serif;
-    border-radius: 2rem;
+    /* border-radius: 2rem; */
     
 }
 .cardClass{
@@ -53,8 +53,10 @@
     /* margin-left: 0px; */
 }
 .background{
-    background-color:whitesmoke;
+    background-color:red;
+    align-items :flex-start;
     width: 100%;
+    display: flex;
 }
 .heading {
     align-self: center;
@@ -63,6 +65,11 @@
     margin-left: 40%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: b;
+    
+}
+.xyz{
+    background-color: orange;
+    margin-right: 2rem;
     
 }
 
