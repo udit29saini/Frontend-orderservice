@@ -122,7 +122,7 @@ const Product = ({childToParent}) => {
             </div>
           </div>
 
-          
+          <div className="cardClass">
           <div class="ui cards align center">
           {
               products.length > 0 ? products.slice(pagesVisited, pagesVisited + userPerPage).map((o) =>
@@ -163,7 +163,7 @@ const Product = ({childToParent}) => {
               ):
               <div></div>
             }
-            
+          </div>  
           </div>
           {/* <Table className="table">
             <thead>
