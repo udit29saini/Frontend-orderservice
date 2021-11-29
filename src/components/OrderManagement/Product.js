@@ -137,7 +137,7 @@ const Product = ({childToParent}) => {
                       <span class="date">{o.id}</span>
                     </div>
                     <div class="description">
-                      {o.categoryId[0]}
+                      {o.categoryId}
                     </div>
                   </div>
                   <div class="extra content">
