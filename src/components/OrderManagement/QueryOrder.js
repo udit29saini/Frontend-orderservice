@@ -55,83 +55,81 @@ const QueryOrder = () => {
      };
 
     return (
-        <div style={{backgroundImage: `url(${pexel})`}}>
-        <Form  onSubmit={handleForm}>
-          <div className="border form">
-          <Row>
-            <Col className="col1"> <h2>Filter:</h2></Col>
-            <Col>
-        <FormGroup >
-    <Label for="exampleSelect">
-    </Label>
-    <Input
-    className="input1" 
-      id="exampleSelect"
-      name="select"
-      type="select"
-      onChange={(e)=>{qsetOrder({...qOrder,select: e.target.value})}}
-    >
-      <option >
-       --SELECT--
-      </option>
-      <option>
-        Billing_Address
-      </option>
-      <option>
-        Address
-      </option>
-      <option>
-        Payment
-      </option>
-      <option>
-        Name
-      </option>
-
-    </Input>
+    <div style={{backgroundImage: `url(${pexel})`}}>
+      <Form  onSubmit={handleForm}>
+        <div className="border form">
+        <Row>
+          <Col className="col1"> <h2>Filter:</h2></Col>
+          <Col>
+          <FormGroup >
+            <Label for="exampleSelect"></Label>
+            <Input
+              className="input1" 
+              id="exampleSelect"
+              name="select"
+              type="select"
+              onChange={(e)=>{qsetOrder({...qOrder,select: e.target.value})}}
+              >
+              <option >
+                --SELECT--
+              </option>
+              <option>
+                Billing_Address
+              </option>
+              <option>
+                Address
+              </option>
+              <option>
+                Payment
+              </option>
+              <option>
+                Name
+              </option>
+            </Input>
   </FormGroup>
   </Col>
   <Col>
   <FormGroup className="">
-    <Label for="criteria">
-  
-    </Label>
-    <Input
-    required
-    className="input2"
-      id="criteria"
-      name="criteria"
-      placeholder= "Query criteria"
-      type="text"
-      onChange={(e)=>{qsetOrder({...qOrder,criteria: e.target.value})}}
-    />
-        </FormGroup>
-        </Col>
-        <Col className="col2">
-        <Container className="text-center">
-               <Button type='submit' onClick={getQuery} color="success">SEARCH</Button>
-           </Container>
-           </Col>
-           </Row>
-           </div>
-        </Form>
-        
-        <div>
-          <Row className="roworder">
-            
-            {orders.length>0? orders.map((o)=>
-               
-             
-               <Order key={o.orderId} order={o} />
+  <Label for="criteria">
 
-            ) : allorders.map((o)=> <Order key={o.orderId} order={o} />) 
-            
-            }
-            </Row>
-           
+  </Label>
+  <Input
+  required
+  className="input2"
+  id="criteria"
+  name="criteria"
+  placeholder= "Query criteria"
+  type="text"
+  onChange={(e)=>{qsetOrder({...qOrder,criteria: e.target.value})}}
+  />
+    </FormGroup>
+    </Col>
+    <Col className="col2">
+    <Container className="text-center">
+            <Button type='submit' onClick={getQuery} color="success">SEARCH</Button>
+        </Container>
+        </Col>
+        </Row>
         </div>
+    </Form>
+    
+    <div>
+      <Row className="roworder">
         
-            {/* <Footer1 /> */}
-        </div>
+        {orders.length>0? orders.map((o)=>
+            
+          
+            <Order key={o.orderId} order={o} />
+
+        ) : allorders.map((o)=> <Order key={o.orderId} order={o} />) 
+        
+        }
+        </Row>
+        
+    </div>
+    
+        {/* <Footer1 /> */}
+    </div>
     )
 }
 
