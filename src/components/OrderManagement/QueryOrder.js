@@ -26,7 +26,7 @@ const QueryOrder = () => {
 
     const getSearch = async()=>{
       try {
-        let url = `http://localhost:8081/order/query-criteria/${qOrder.select}/${qOrder.criteria}`;
+        let url = `http://localhost:8091/order/query-criteria/${qOrder.select}/${qOrder.criteria}`;
         
         const res = await fetch(url);
         const data = await res.json();

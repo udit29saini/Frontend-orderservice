@@ -85,7 +85,29 @@ const AddOrderForm = (pro) => {
                type="text" className="input3"
                onChange={(e)=>{setOrder({...order,shippingAddress: e.target.value})}}
                />
-           </FormGroup> 
+           </FormGroup>
+           <FormGroup>
+               <Label ><h4>Phone Number:</h4></Label>
+               <Input 
+               required
+               id="mobileNumber"
+               name="mobileNumber"
+               placeholder="enter here"
+               type="text" className="input1"
+               onChange={(e)=>{setOrder({...order,mobileNumber: e.target.value})}}
+               />
+           </FormGroup >
+           <FormGroup>
+               <Label ><h4>Email:</h4></Label>
+               <Input 
+               required
+               id="email"
+               name="email"
+               placeholder="enter here"
+               type="text" className="input1"
+               onChange={(e)=>{setOrder({...order,email: e.target.value})}}
+               />
+           </FormGroup >  
            
                <h4>Payment Type:</h4>        
            <FormGroup >

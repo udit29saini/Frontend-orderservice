@@ -55,20 +55,21 @@ const Order = (props) => {
       // </Card>
       
       // <div className="background">
+      <Col>
         
-        <div class="ui cards align center xyz">
+        <div className="ui cards align center xyz">
           {
-              <div class="card">
-                <div class="content">
-                  <a class="header">ORDER ID: {props.order.orderId}</a>
+              <div className="card">
+                <div className="content">
+                  <a className="header">ORDER ID: {props.order.orderId}</a>
                   <div class="meta">
-                    <span class="date">Name: {props.order.nameCustomer}</span>
+                    <span className="date">Name: {props.order.nameCustomer}</span>
                     <br/>
-                    <span class="date">Email Id: {props.order.email}</span>
+                    <span className="date">Email Id: {props.order.email}</span>
                     <br/>
-                    <span class="date">Mobile No: {props.order.mobileNumber}</span>
+                    <span className="date">Mobile No: {props.order.mobileNumber}</span>
                   </div>
-                  <div class="description">
+                  <div className="description">
                   Shipping Address: {props.order.shippingAddress}
                   <br/>
                   Billing Address: {props.order.billingAddress}
@@ -85,19 +86,20 @@ const Order = (props) => {
                   <CardTitle className="cardTitle">Payment Status: Postpaid</CardTitle>
                   </a>}
                 </div>
-                <div class="extra content">
-                  <div class="ui two buttons">
-                    <div class="positive ui button" onClick={editB} color="primary">UPDATE</div>
+                <div className="extra content">
+                  <div className="ui two buttons">
+                    <div className="positive ui button" onClick={editB} color="primary">UPDATE</div>
                     {/* <Button onClick={()=>addP(o)} color="primary" >ADD</Button> */}
 
-                    <div class="negative ui button" >TRACK ORDER</div>
+                    <div className="negative ui button" >TRACK ORDER</div>
                     {/* <Button color="danger" onClick={()=>deleteP(o)}>Delete</Button> */}
                   </div>
                 </div>
               </div>    
           }
           </div>
-        // </div>
+          </Col>
+      
   )
 }
 
