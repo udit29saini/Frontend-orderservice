@@ -10,17 +10,13 @@
     
 }
 
-.roworder{
+/* .roworder{
   
-    margin-top: 10px;
-    /* margin-left: 150px; */
-    /* margin-right: 150px; */
-    background-color: red;
-    align-items: center;
     display: flex;
+    background-color: green;
 
     
-}
+} */
 
 .order{
     background-color: royalblue;
@@ -53,4 +49,8 @@
     margin-left: 40%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: b;
+}
+
+.roworderClass{
+    background-color: brown;
 }

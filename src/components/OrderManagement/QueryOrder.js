@@ -8,6 +8,9 @@ import AllOrder from './AllOrder';
 import Footer1 from './Footer1';
 import pexel from "./pexels-jess-bailey-designs-743986.jpg"
 import "./queryOrder.css"
+import ReactPaginate from 'react-paginate';
+
+const pageSize = 3;
 
 const QueryOrder = () => {
   useEffect(()=>{document.title="query order"; getAllOrder();},[]);
@@ -15,6 +18,11 @@ const QueryOrder = () => {
     const [qOrder, qsetOrder] =  useState({});
     const [orders, setOrder]=useState([]);
     const [allorders, setAllOrder] = useState([])
+    const [pageNumber, setPageNumber] = useState(0);
+
+    const userPerPage = 4;     
+    const pageCount = Math.ceil(orders.length / userPerPage);
+    const pagesVisited = pageNumber * userPerPage;
 
     const handleForm=(e)=>{
         
@@ -54,81 +62,90 @@ const QueryOrder = () => {
        }
      };
 
+     const handlePageClick = ({ selected }) => {
+      setPageNumber(selected);
+    };
+
+
     return (
-    <div style={{backgroundImage: `url(${pexel})`}}>
-      <Form  onSubmit={handleForm}>
-        <div className="border form">
-        <Row>
-          <Col className="col1"> <h2>Filter:</h2></Col>
-          <Col>
-          <FormGroup >
-            <Label for="exampleSelect"></Label>
-            <Input
-              className="input1" 
-              id="exampleSelect"
-              name="select"
-              type="select"
-              onChange={(e)=>{qsetOrder({...qOrder,select: e.target.value})}}
-              >
-              <option >
-                --SELECT--
-              </option>
-              <option>
-                Billing_Address
-              </option>
-              <option>
-                Address
-              </option>
-              <option>
-                Payment
-              </option>
-              <option>
-                Name
-              </option>
-            </Input>
-  </FormGroup>
-  </Col>
-  <Col>
-  <FormGroup className="">
-  <Label for="criteria">
-
-  </Label>
-  <Input
-  required
-  className="input2"
-  id="criteria"
-  name="criteria"
-  placeholder= "Query criteria"
-  type="text"
-  onChange={(e)=>{qsetOrder({...qOrder,criteria: e.target.value})}}
-  />
-    </FormGroup>
-    </Col>
-    <Col className="col2">
-    <Container className="text-center">
-            <Button type='submit' onClick={getQuery} color="success">SEARCH</Button>
-        </Container>
-        </Col>
-        </Row>
-        </div>
-    </Form>
-    
     <div>
-      <Row className="roworder">
-        
-        {orders.length>0? orders.map((o)=>
-            
-          
-            <Order key={o.orderId} order={o} />
+      <Form  onSubmit={handleForm}>
+        <div className="queryOrder">
+            <div className="filter"><h2>Filter:</h2></div>
+            <div className="formGroup">
+              <Input
+                className="input1" 
+                id="exampleSelect"
+                name="select"
+                type="select"
+                onChange={(e)=>{qsetOrder({...qOrder,select: e.target.value})}}
+                >
+                <option >
+                  --SELECT--
+                </option>
+                <option>
+                  Billing_Address
+                </option>
+                <option>
+                  Address
+                </option>
+                <option>
+                  Payment
+                </option>
+                <option>
+                  Name
+                </option>
+                <option>
+                  Date
+                </option>
 
+              </Input>
+            </div>  
+            <div className="formGroup1">
+              <Input
+              required
+              className="input2"
+              id="criteria"
+              name="criteria"
+              placeholder= "Query criteria"
+              type="text"
+              onChange={(e)=>{qsetOrder({...qOrder,criteria: e.target.value})}}
+              />
+            </div>
+            <div className="filterButton">
+            <Button type='submit' onClick={getQuery} color="success">SEARCH</Button>
+            </div>
+                    
+        </div>
+      </Form>        
+      <div className="filterOrders">  
+      {/* products.slice(pagesVisited, pagesVisited + userPerPage).map */}
+        {orders.length>0? orders.slice(pagesVisited, pagesVisited + userPerPage).map((o)=>
+            <Order key={o.orderId} order={o} />
         ) : allorders.map((o)=> <Order key={o.orderId} order={o} />) 
-        
         }
-        </Row>
-        
-    </div>
-    
-        {/* <Footer1 /> */}
+      </div>    
+      <div className="paginationclass1">
+          <ReactPaginate className="paginatebuttons"
+          previousLabel="Prev"
+          nextLabel={'Next'}
+          breakLabe={'...'}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={3}
+          onPageChange={handlePageClick}
+          containerClassName="boxes"
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+          previousClassName="page-link"
+          previousLinkClassName="page-item"
+          nextClassName="page-link"
+          nextLinkClassName="page-item"
+          breakClassName="page-link"
+          breakLinkClassName="page-item"
+          activeClassName="active"
+          ></ReactPaginate>
+        </div>
     </div>
     )
 }

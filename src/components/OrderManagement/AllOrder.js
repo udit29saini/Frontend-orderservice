@@ -50,8 +50,7 @@ return (
               <h1>ALL ORDERS</h1>
             </div>
           </div>
-        <div>
-          <div className="roworder" >
+          <div className="roworderClass" >
             {
               orders.length > 0 ? orders.slice(pagesVisited, pagesVisited + usersPerPage).map((o) =>
               <Order key={o.orderId} order={o} className="order"/>) : 
@@ -60,8 +59,7 @@ return (
                 <h1 className='text-center'> No Orders</h1> 
               </div>
             }
-          </div>
-        </div>   
+          </div> 
         <div className= "paginationBttns">
           <ReactPaginate
            previousLabel={'Prev'}

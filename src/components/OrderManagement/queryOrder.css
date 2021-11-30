@@ -11,15 +11,52 @@
 }
 .input1{
     width: 300px;
-    height: 40px;
-    margin-right: 50px;
+    height: 35px;
+    
 }
 .input2{
     width: 300px;
-    height: 40px;
+    height: 35px;
     margin-right: 50px;
 }
 .col2{
     margin-top: 20px;
     margin-right: 190px;
+}
+
+.queryOrder{
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    height: 5rem;
+}
+
+.filter{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-right: auto;
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.formGroup{
+    margin-top: 1rem;
+    margin-left: auto;
+}
+
+.formGroup1{
+    margin-top: 1rem;
+    margin-left: auto;
+}
+
+.filterButton{
+    margin-left: auto;
+    margin-top: 1rem;
+    
+}
+
+.filterOrders{
+    /* background-color: blue; */
+    display: flex;
 }
