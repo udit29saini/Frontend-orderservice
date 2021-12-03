@@ -63,6 +63,6 @@
 .cardClasss{
     /* background-color: darkred; */
     width: 110%;
-    height: 107%;
+    height: auto;
     justify-content: right;
 }
