@@ -12,6 +12,7 @@
 .input1{
     width: 300px;
     height: 35px;
+    display:inline-flex;
     
 }
 .input2{
@@ -35,7 +36,8 @@
     margin-top: 1rem;
     margin-bottom: 2rem;
     margin-right: auto;
-    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     margin-left: 1rem;
     margin-top: 1rem;
 }

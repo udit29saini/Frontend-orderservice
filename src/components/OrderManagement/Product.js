@@ -160,11 +160,13 @@ const Product = ({childToParent}) => {
                     </div>
                   </div>
                 </div>    
+          
               ):
               <div></div>
             }
           </div>  
           </div>
+
           {/* <Table className="table">
             <thead>
               <tr>

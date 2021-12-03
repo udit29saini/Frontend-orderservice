@@ -5,6 +5,8 @@ import AddOrder from './AddOrder';
 import AddModal from './AddModal';
 import { render } from '@testing-library/react';
 import EditModal from './EditModal';
+import ReactPaginate from 'react-paginate';
+import { useState } from 'react';
 import "./order.css";
 const Order = (props) => {
   const editB = () => {
@@ -13,6 +15,15 @@ const Order = (props) => {
       <EditModal oId={props.order.orderId} />
     )
   }
+
+  const [pageNumber, setPageNumber] = useState(0);
+  const userPerPage = 2;     
+  const pageCount = Math.ceil(8/ userPerPage);
+  const pagesVisited = pageNumber * userPerPage;
+
+  const handlePageClick = ({ selected }) => {
+    setPageNumber(selected);
+  };
 
   return (
         <div className="cardClass">
@@ -54,9 +65,31 @@ const Order = (props) => {
                 </div>
               </div>
             </div>    
+            <Container style={{marginBottom:10}} className="text-center"></Container>
           </div>
+          {/* <div className="paginatedclass1">
+          <ReactPaginate className="paginatebuttons"
+          previousLabel="Prev"
+          nextLabel={'Next'}
+          breakLabe={'...'}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={3}
+          onPageChange={handlePageClick}
+          containerClassName="boxes"
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+          previousClassName="page-link"
+          previousLinkClassName="page-item"
+          nextClassName="page-link"
+          nextLinkClassName="page-item"
+          breakClassName="page-link"
+          breakLinkClassName="page-item"
+          activeClassName="active"
+          ></ReactPaginate>
+          </div> */}
         </div>
-  )
+      )
 }
 
 export default Order

@@ -38,7 +38,7 @@ const QueryOrder = () => {
         
         const res = await fetch(url);
         const data = await res.json();
-       // console.log("helloe",data);
+       console.log("helloe",data);
         setOrder(data);
         console.log("ord",orders);
         //alert("order fetched")
@@ -56,7 +56,8 @@ const QueryOrder = () => {
          const res = await fetch(url);
          const data = await res.json();
          setAllOrder(data);
-         //console.log("orders",allorders);
+         setOrder(data);
+         console.log("orders",allorders);
        } catch (error) {
          console.log(error);
        }
@@ -120,9 +121,10 @@ const QueryOrder = () => {
       </Form>        
       <div className="filterOrders">  
       {/* products.slice(pagesVisited, pagesVisited + userPerPage).map */}
-        {orders.length>0? orders.slice(pagesVisited, pagesVisited + userPerPage).map((o)=>
+            {orders.length>0? orders.slice(pagesVisited, pagesVisited + userPerPage).map((o)=>
             <Order key={o.orderId} order={o} />
-        ) : allorders.map((o)=> <Order key={o.orderId} order={o} />) 
+        ) :             
+            <div>NO ORDERS</div>
         }
       </div>    
       <div className="paginationclass1">

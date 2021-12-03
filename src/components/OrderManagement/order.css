@@ -74,5 +74,16 @@
 .cardClass{
     justify-content: center;
 }
+.paginatedclass1{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    background-color: whitesmoke;
+
+    margin-top: auto;
+}
 
 
