@@ -8,10 +8,10 @@ import AddModal from './AddModal';
 import AddOrderForm from './AddOrderForm';
 import EditModal from './EditModal';
 import './product.css'
-import _ from "lodash" ;
+import _, { sortedUniq } from "lodash" ;
 import axios from "axios";
 import ReactPaginate from 'react-paginate';
-
+import Cart from './Cart'
 const pageSize = 3;
 
 const Product = ({childToParent}) => {
@@ -25,6 +25,19 @@ const Product = ({childToParent}) => {
         <AddModal pro={createP} />
       )
     }
+
+    const postData = () => {
+      axios.post(`http://localhost:8091/cart/cart`, createP).then(
+          (response) => {
+              console.log("success", response);
+              //console.log(orders);
+          },
+          (error) => {
+              console.log(error);
+          })
+    };
+
+
     
     const [paginatedProduct,setpaginatedPproduct]= useState([]);
     const [pageNumber, setPageNumber] = useState(0);
@@ -60,33 +73,36 @@ const Product = ({childToParent}) => {
     const addP=(o)=>{
       
         //createP.push(o)
-        setCreateP([...createP,o]);
-        o.qty++;
+        const newP = createP.filter(e=> e.id !== o.id);
+        var element = createP.find(e=>e.id==o.id);
+        if(element==null)
+        {
+          element=o;
+          setCount(o.qty)
+        }
+        else {
+          element.qty=element.qty+1;
+          setCount(element.qty)
+        }
+        console.log(element);
+        setCreateP([...newP,element]);
+        
         //childToParent(createP);
         
     };
 
     const deleteP=(o)=>{
       const newP = createP.filter(e=> o.id !== e.id);
-      setCreateP(newP);
-      o.qty--;
+      var element = createP.find(e=>e.id==o.id);
+      element.qty--;
+      setCount(element.qty)
+      setCreateP([...newP,element]);
       //childToParent(createP);
       
       };
 
       const sendP=()=>{
         childToParent(createP)
-      }
-
-      const countP=(o)=>{
-        let count=0;
-        createP.map(item=>{
-          if(item.id===o.id)
-          {
-              count++;
-          }
-          })
-          return count;
       }
 
 
@@ -104,7 +120,7 @@ const Product = ({childToParent}) => {
           imageUrl : item.imageUrl,
           name: item.name,
           price:item.price,
-          qty:0
+          qty:1
         }; 
       })  
     }
@@ -118,7 +134,7 @@ const Product = ({childToParent}) => {
               <h1>ADD PRODUCT</h1>
             </div>
             <div className="button">
-              <Button  className="submitbutton" onClick={openForm}>Proceed Order</Button>
+              <Button  className="submitbutton" onClick={postData}>Show Cart</Button>
             </div>
           </div>
 
@@ -147,7 +163,7 @@ const Product = ({childToParent}) => {
                   </div>
                   <div class="extra content">
                     <a>
-                        Number Of {o.name} in cart={o.qty}
+                        Number Of {o.name} in cart={count}
                     </a>
                   </div>
                   <div class="extra content">
@@ -160,50 +176,14 @@ const Product = ({childToParent}) => {
                     </div>
                   </div>
                 </div>    
-          
               ):
               <div></div>
             }
           </div>  
           </div>
-
-          {/* <Table className="table">
-            <thead>
-              <tr>
-                <th>Image</th>
-                <th>Product ID</th>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Category</th>
-                <th>Add Product</th>
-                <th>Remove Product</th>
-                <th>count</th>
-            </tr>
-            </thead>
-            <tbody>
-            {
-              product.length > 0 ? product.slice(pagesVisited, pagesVisited + userPerPage).map((o) =>
-                <tr key={o.id}>
-                    <td><img src="https://cdn0.wideopenpets.com/wp-content/uploads/2017/03/AdobeStock_83729458.jpeg" className="img-responsive"/></td>
-                    <td>{o.id}</td>
-                    <td>{o.name}</td>
-                    <td>₹. {o.price}</td>
-                    <td>{o.categoryId[0]}</td>
-                    <td>
-                      <Button onClick={()=>addP(o)} color="primary" >ADD</Button>
-                    </td>
-                    <td>
-                      <Button color="danger" onClick={()=>deleteP(o)}>Delete</Button>
-                    </td>
-                    <td>0</td>
-                </tr>
-              ):
-              <div></div>
-            }
-            </tbody>
-          </Table> */}
           <Container style={{marginBottom:10}} className="text-center"></Container>            
-        </div>         
+        </div>
+        
         <div className="paginationclass1">
           <ReactPaginate className="paginatebuttons"
           previousLabel="Prev"

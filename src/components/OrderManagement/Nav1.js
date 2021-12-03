@@ -30,10 +30,10 @@ const Nav1 = () => {
       Add Order
     </NavLink>
     {' '}
-    {/* <NavLink href="/Cart">
+    <NavLink href="/Cart">
       Cart
     </NavLink>
-    {' '} */}
+    {' '}
   </Nav>
       {/* </div> */}
       </Navbar.Collapse>
