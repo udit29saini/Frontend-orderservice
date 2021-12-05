@@ -48,7 +48,7 @@ const Cart = (props) => {
                   </div>
                   <div class="card-body styleItem">
                     <div class="imageClass">
-                      <img src={o.imageUrl}/>
+                      <p><img src={o.imageUrl} alt="Example1" width="193" height="130"/></p>
                     </div>
                     <div className="itemInfo">
                       <h5 class="card-title">{o.name}</h5>
