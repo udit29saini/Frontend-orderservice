@@ -91,7 +91,7 @@ const Cart = (props) => {
               </div>
               <div className="extra content">
                 <div className="ui two buttons">
-                  <div className="positive ui button"  color="primary">Add More Items</div>
+                  <a href="/Product" className="positive ui button"  color="primary">Add More Items</a>
                   {/* <Button onClick={()=>addP(o)} color="primary" >ADD</Button> */}
 
                   <div className="negative ui button" >Checkout</div>

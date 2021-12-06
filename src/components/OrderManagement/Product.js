@@ -134,7 +134,8 @@ const Product = ({childToParent}) => {
               <h1>ADD PRODUCT</h1>
             </div>
             <div className="button">
-              <Button   className="submitbutton" onClick={postData}>Show Cart</Button>
+              <Button   className="submitbutton" onClick={postData}>Add To Cart</Button>
+              <Button href="/Cart" className="submitbutton" >Show Cart</Button>
             </div>
           </div>
 
@@ -146,7 +147,7 @@ const Product = ({childToParent}) => {
                 <div class="card">
                   <div class="image">
                       <p className="img123">
-                        <img src={o.imageUrl} alt="Example1" width="285" height="210"/> 
+                        <img src={o.imageUrl} alt="Example1" width="285" height="200"/> 
                       </p>
                   </div>
                   <div class="content">
@@ -179,7 +180,7 @@ const Product = ({childToParent}) => {
                   </div>
                 </div>    
               ):
-              <div></div>
+              <div>No Items In cart</div>
             }
           </div>  
           </div>
