@@ -134,7 +134,7 @@ const Product = ({childToParent}) => {
               <h1>ADD PRODUCT</h1>
             </div>
             <div className="button">
-              <Button  className="submitbutton" onClick={postData}>Show Cart</Button>
+              <Button   className="submitbutton" onClick={postData}>Show Cart</Button>
             </div>
           </div>
 
@@ -146,7 +146,7 @@ const Product = ({childToParent}) => {
                 <div class="card">
                   <div class="image">
                       <p className="img123">
-                        <img src="https://cdn0.wideopenpets.com/wp-content/uploads/2017/03/AdobeStock_83729458.jpeg" alt="Example1" width="193" height="130"/> 
+                        <img src={o.imageUrl} alt="Example1" width="285" height="210"/> 
                       </p>
                   </div>
                   <div class="content">

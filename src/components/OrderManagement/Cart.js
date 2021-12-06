@@ -87,7 +87,7 @@ const Cart = (props) => {
                 </div>
               </div>
               <div class="extra content">
-                <h4>Checkout Amount : {cart.checkoutAmount}</h4>
+                <h4>Checkout Amount : {cart.checkoutAmount} ₹</h4>
               </div>
               <div className="extra content">
                 <div className="ui two buttons">

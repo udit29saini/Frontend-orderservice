@@ -99,5 +99,9 @@
     /* display: flex; */
     display: inline-flex;
     background-color: red;
-    /* justify-content: center; */
+    justify-content: center;
+}
+
+.image{
+    justify-content: center;
 }
