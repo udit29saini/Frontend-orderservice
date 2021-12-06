@@ -145,7 +145,9 @@ const Product = ({childToParent}) => {
                 
                 <div class="card">
                   <div class="image">
-                    <img src="https://cdn0.wideopenpets.com/wp-content/uploads/2017/03/AdobeStock_83729458.jpeg"/>
+                      <p className="img123">
+                        <img src="https://cdn0.wideopenpets.com/wp-content/uploads/2017/03/AdobeStock_83729458.jpeg" alt="Example1" width="193" height="130"/> 
+                      </p>
                   </div>
                   <div class="content">
                     <a class="header">{o.name}</a>

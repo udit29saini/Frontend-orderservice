@@ -40,7 +40,7 @@
 
 .itemInfo{
     /* background-color: darkorange; */
-    
+    /* display: flex; */
     margin-right: 27%;
 }
 
@@ -54,6 +54,9 @@
 .indeClass{
     display: flex;
     margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    /* margin-right: 20rem; */
     height: 35px;
 }
 

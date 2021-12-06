@@ -95,3 +95,9 @@
     
     justify-content: center;   
 }
+.img123{
+    /* display: flex; */
+    display: inline-flex;
+    background-color: red;
+    /* justify-content: center; */
+}
